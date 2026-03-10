@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+<div align="center">
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Holiday</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Holiday</h1>
+
+    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
+        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
+        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    </div>
+
+    <table>
+        <tr>
+            <th align="left">HolidayCode<span style="color: red">*</span></th>
+            <td><input type="text" name="holidayCode" [(ngModel)]="form.data.holidayCode" placeholder="Enter holidayCode"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.holidayCode}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">HolidayName<span style="color: red">*</span></th>
+            <td><input type="text" name="holidayName" [(ngModel)]="form.data.holidayName" placeholder="Enter holidayName"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.holidayName}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">HolidayDate<span style="color: red">*</span></th>
+            <td><input type="date" name="holidayDate" [(ngModel)]="form.data.holidayDate" placeholder="Enter holidayDate" style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.holidayDate}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">HolidayType<span style="color: red">*</span></th>
+            <td><input type="text" name="holidayType" [(ngModel)]="form.data.holidayType" placeholder="Enter holidayType" style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.holidayType}}</td>
+        </tr>
+
+        <tr></tr>
+
+        <tr>
+            <th></th>
+            <td align="left" colspan="2">
+                <button (click)="submit()">save</button> &nbsp;
+            </td>
+        </tr>
+    </table>
+</div>
+
+<app-footer></app-footer>

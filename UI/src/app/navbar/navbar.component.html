@@ -1,0 +1,29 @@
+<div *ngIf="isLogin()">
+    <h3><b>Hi, {{ form.data.firstName }} ( {{ form.data.roleName }} )</b></h3>
+
+    <a routerLink="/user"><b>Add User</b></a> |
+    <a routerLink="/userlist"><b>User List</b></a> |
+    <a routerLink="/role"><b>Add Role</b></a> |
+    <a routerLink="/rolelist"><b>Role List</b></a> |
+    <a routerLink="/loan"><b>Add Loan</b></a>|
+    <a routerLink="/loanlist"><b>Loan List</b></a> |
+    <a routerLink="/gym"><b>Add Gym</b></a> |
+    <a routerLink="/gymlist"><b>Gym List</b></a> |
+    <a routerLink="/travel"><b>Add Travel</b></a> |
+    <a routerLink="/travellist"><b>Travel List</b></a> |
+    <a routerLink="/holiday"><b>Add Holiday</b></a> |
+    <a routerLink="/holidaylist"><b>Holiday list</b></a> |
+    <a routerLink="/changepassword"><b>Change Password</b></a> |
+
+    <a (click)="logout()">
+        <font color="blue"><b>Logout</b></font>
+    </a>
+</div>
+
+<div *ngIf="!isLogin()">
+    <h3>Hi, Guest</h3>
+    <a routerLink="/dashboard"><b>Dashboard</b></a> |
+    <a routerLink="/login"><b>Login</b></a>
+</div>
+
+<hr>
