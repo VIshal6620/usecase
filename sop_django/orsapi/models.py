@@ -128,3 +128,22 @@ class Holiday(models.Model):
     class Meta:
      db_table = 'sos_holiday'
 
+class Speaker(models.Model):
+    speakerName = models.CharField(max_length=50)
+    topic = models.CharField(max_length=60)
+    organization = models.CharField(max_length=50)
+
+    def to_json(self):
+        data= {
+            'id': self.id,
+            'speakerName': self.speakerName,
+            'topic': self.topic,
+            'organization': self.organization
+        }
+
+        return data
+
+    class Meta:
+        db_table = 'sos_speaker'
+
+

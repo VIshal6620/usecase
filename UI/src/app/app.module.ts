@@ -29,6 +29,8 @@ import { ServiceLocatorService } from './service-locator.service';
 import { AuthServiceService } from './auth-service.service';
 import { HolidayComponent } from './holiday/holiday.component';
 import { HolidayListComponent } from './holiday/holiday-list.component';
+import { SpeakerComponent } from './speaker/speaker.component';
+import { SpeakerListComponent } from './speaker/speaker-list.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { HolidayListComponent } from './holiday/holiday-list.component';
     TravelComponent,
     TravelListComponent,
     HolidayComponent,
-    HolidayListComponent
+    HolidayListComponent,
+    SpeakerComponent,
+    SpeakerListComponent
  ],
   imports: [
     BrowserModule,

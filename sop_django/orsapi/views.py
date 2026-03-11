@@ -10,8 +10,9 @@ from .ctl.ForgetPasswordCtl import ForgetPasswordCtl
 from .ctl.ErrorCtl import ErrorCtl
 from .ctl.LoanCtl import LoanCtl
 from .ctl.GymCtl import GymCtl
+from .ctl.TravelCtl import TravelCtl
 from .ctl.HolidayCtl import HolidayCtl
-
+from .ctl.SpeakerCtl import SpeakerCtl
 @csrf_exempt
 def action(request, page, action="get", id=0, pageNo=1):
     methodCall = page + "Ctl()." + action + "(request,{'id':id, 'pageNo':pageNo})"

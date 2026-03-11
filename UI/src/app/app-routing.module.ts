@@ -17,6 +17,8 @@ import { ForgetpasswordComponent } from "./login/forgetpassword.component";
 import { NgModule } from "@angular/core";
 import { HolidayComponent } from "./holiday/holiday.component";
 import { HolidayListComponent } from "./holiday/holiday-list.component";
+import { SpeakerComponent } from "./speaker/speaker.component";
+import { SpeakerListComponent } from "./speaker/speaker-list.component";
 
 
 
@@ -112,6 +114,18 @@ const routes: Routes = [
   {
     path:'holiday/:id',
     component: HolidayComponent
+  },
+  {
+    path:'speaker',
+    component: SpeakerComponent
+  },
+ {
+   path:'speakerlist',
+   component: SpeakerListComponent
+  },
+  {
+    path:'speaker/:id',
+    component: SpeakerComponent
   },
   {
     path: 'changepassword',

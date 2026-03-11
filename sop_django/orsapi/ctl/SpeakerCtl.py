@@ -1,71 +1,60 @@
 import json
+
 from django.http import JsonResponse
 from ..ctl.BaseCtl import BaseCtl
 from ..ctl.ErrorCtl import ErrorCtl
-from ..models import Travel
-from ..service.TravelService import TravelService
+from ..models import Speaker
+from ..service.SpeakerService import SpeakerService
 from ..utility.DataValidator import DataValidator
 
 
-class TravelCtl(BaseCtl):
+class SpeakerCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
         self.form['id'] = requestForm.get('id')
-        self.form['travelerName'] = requestForm.get('travelerName')
-        self.form['destination'] = requestForm.get('destination')
-        self.form['startDate'] = requestForm.get('startDate')
-        self.form['endDate'] = requestForm.get('endDate')
+        self.form['speakerName'] = requestForm.get('speakerName')
+        self.form['topic'] = requestForm.get('topic')
+        self.form['organization'] = requestForm.get('organization')
 
     def form_to_model(self, obj):
         pk = int(self.form['id'])
         if pk > 0:
             obj.id = pk
-        obj.travelerName = self.form['travelerName']
-        obj.destination = self.form['destination']
-        obj.startDate = self.form['startDate']
-        obj.endDate = self.form['endDate']
+        obj.speakerName = self.form['speakerName']
+        obj.topic = self.form['topic']
+        obj.organization = self.form['organization']
         return obj
 
     def model_to_form(self, obj):
         if obj == None:
             return
         self.form['id'] = obj.id
-        self.form['travelerName'] = obj.travelerName
-        self.form['destination'] = obj.destination
-        self.form['startDate'] = obj.startDate
-        self.form['endDate'] = obj.endDate
+        self.form['speakerName'] = obj.speakerName
+        self.form['topic'] = obj.topic
+        self.form['organization'] = obj.organization
 
     def input_validation(self):
         super().input_validation()
         inputError = self.form['inputError']
 
-        if (DataValidator.isNull(self.form['travelerName'])):
-            inputError['travelerName'] = "travelerName can not be null"
+        if (DataValidator.isNull(self.form['speakerName'])):
+            inputError['speakerName'] = "speakerName can not be null"
             self.form['error'] = True
         else:
-            if (DataValidator.isalphacehck(self.form['travelerName'])):
-                inputError['travelerName'] = "travelerName contains only number"
+            if (DataValidator.isalphacehck(self.form['speakerName'])):
+                inputError['speakerName'] = "speakerName contains only number"
                 self.form['error'] = True
 
-        if (DataValidator.isNull(self.form['destination'])):
-            inputError['destination'] = "destination can not be null"
+        if (DataValidator.isNull(self.form['topic'])):
+            inputError['topic'] = "topic can not be null"
             self.form['error'] = True
 
-
-        if (DataValidator.isNull(self.form['startDate'])):
-            inputError['startDate'] = "DOB can not be null"
-            self.form['error'] = True
-        else:
-            if (DataValidator.isDate(self.form['startDate'])):
-                inputError['startDate'] = "Incorrect date format, should be YYYY-MM-DD"
-                self.form['error'] = True
-
-        if (DataValidator.isNull(self.form['endDate'])):
-            inputError['endDate'] = "DOB can not be null"
+        if (DataValidator.isNull(self.form['organization'])):
+            inputError['organization'] = "organization can not be null"
             self.form['error'] = True
         else:
-            if (DataValidator.isDate(self.form['endDate'])):
-                inputError['endDate'] = "Incorrect date format, should be YYYY-MM-DD"
+            if (DataValidator.isalphacehck(self.form['organization'])):
+                inputError['organization'] = "organization contains only number"
                 self.form['error'] = True
 
         return self.form['error']
@@ -84,7 +73,7 @@ class TravelCtl(BaseCtl):
                 return JsonResponse(res)
             # Check unique elements
             pk = int(self.form['id'])
-            uniqueAttrib = {"travelerName": self.form['travelerName']}
+            uniqueAttrib = {"speakerName": self.form['speakerName']}
             duplicateErrors = self.get_service().mduplicateFields(uniqueAttrib, pk)
             size = len(duplicateErrors)
             if (size > 0):
@@ -92,12 +81,12 @@ class TravelCtl(BaseCtl):
                 res["result"]["inputerror"] = duplicateErrors
                 return JsonResponse(res)
 
-            # Add/ Update the user
-            travel = self.form_to_model(Travel())
-            self.get_service().save(travel)
+            # Add/ Update the speaker
+            speaker = self.form_to_model(Speaker())
+            self.get_service().save(speaker)
             res["success"] = True
-            res["result"]["data"] = travel.id
-            res["result"]["message"] = " Travel added successfully"
+            res["result"]["data"] = speaker.id
+            res["result"]["message"] = "speaker added successfully"
             return JsonResponse(res)
 
         except Exception as ex:
@@ -109,13 +98,13 @@ class TravelCtl(BaseCtl):
             json_request = json.loads(request.body)
             res = {"result": {}, "success": True}
             if (json_request):
-                params["travelerName"] = json_request.get("travelerName", None)
+                params["speakerName"] = json_request.get("speakerName", None)
                 params["pageNo"] = json_request.get("pageNo", None)
             records = self.get_service().search(params)
             if records and records.get("data"):
                 res["success"] = True
                 res["result"]["data"] = records["data"]
-                res["result"]["lastId"] = Travel.objects.last().id
+                res["result"]["lastId"] = Speaker.objects.last().id
             else:
                 res["success"] = False
                 res["result"]["message"] = "No record found"
@@ -156,14 +145,14 @@ class TravelCtl(BaseCtl):
     def preload(self, request, params={}):
         try:
             res = {"result": {}, "success": True}
-            travel_list = TravelService().preload()
+            speaker_list = SpeakerService().preload()
             preloadList = []
-            for x in travel_list:
+            for x in speaker_list:
                 preloadList.append(x.to_json())
-            res["result"]["travellist"] = preloadList
+            res["result"]["speakerlist"] = preloadList
             return JsonResponse(res)
         except Exception as ex:
             return ErrorCtl.handle(ex)
 
     def get_service(self):
-        return TravelService()
+        return SpeakerService()
