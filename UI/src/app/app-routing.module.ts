@@ -19,6 +19,8 @@ import { HolidayComponent } from "./holiday/holiday.component";
 import { HolidayListComponent } from "./holiday/holiday-list.component";
 import { SpeakerComponent } from "./speaker/speaker.component";
 import { SpeakerListComponent } from "./speaker/speaker-list.component";
+import { PlantNurseryComponent } from "./plantnursery/plantnursery.component";
+import { PlantNurseryListComponent } from "./plantnursery/plantnursery-list.component";
 
 
 
@@ -126,6 +128,18 @@ const routes: Routes = [
   {
     path:'speaker/:id',
     component: SpeakerComponent
+  },
+  {
+    path:'PlantNursery',
+    component: PlantNurseryComponent
+  },
+ {
+   path:'PlantNurserylist',
+   component: PlantNurseryListComponent
+  },
+  {
+    path:'PlantNursery/:id',
+    component: PlantNurseryComponent
   },
   {
     path: 'changepassword',

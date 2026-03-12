@@ -15,4 +15,5 @@ export class EndpointServiceService {
   public TRAVEL = this.SERVER_URL + "/Travel"
   public HOLIDAY = this.SERVER_URL + "/Holiday"
   public SPEAKER = this.SERVER_URL + "/Speaker"
+  public PLANTNURSERY = this.SERVER_URL + "/PlantNursery"
 }

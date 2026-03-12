@@ -31,6 +31,9 @@ import { HolidayComponent } from './holiday/holiday.component';
 import { HolidayListComponent } from './holiday/holiday-list.component';
 import { SpeakerComponent } from './speaker/speaker.component';
 import { SpeakerListComponent } from './speaker/speaker-list.component';
+import { PlantNurseryListComponent } from './plantnursery/plantnursery-list.component'
+import { PlantNurseryComponent } from './plantnursery/plantnursery.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ import { SpeakerListComponent } from './speaker/speaker-list.component';
     HolidayComponent,
     HolidayListComponent,
     SpeakerComponent,
-    SpeakerListComponent
+    SpeakerListComponent,
+    PlantNurseryComponent,
+    PlantNurseryListComponent
  ],
   imports: [
     BrowserModule,
