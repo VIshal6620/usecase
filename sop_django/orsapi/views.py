@@ -14,6 +14,7 @@ from .ctl.TravelCtl import TravelCtl
 from .ctl.HolidayCtl import HolidayCtl
 from .ctl.SpeakerCtl import SpeakerCtl
 from .ctl.PlantNurseryCtl import PlantNurseryCtl
+from .ctl.EventCtl import EventCtl
 
 
 @csrf_exempt

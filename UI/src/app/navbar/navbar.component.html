@@ -1,4 +1,372 @@
-<div *ngIf="isLogin()">
+<nav *ngIf="isLogin()" class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<!-- Logo -->
+
+<a class="navbar-brand" href="#" style="margin-left:25px;"> <img src="assets/customLogo1.png" height="40px"></a>
+   
+
+
+<div style="padding-left:5px;" class="d-flex flex-wrap gap-2">
+
+<!-- User -->
+
+<div class="dropdown">
+<button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-users"></i> User
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/user" class="dropdown-item"><i class="fa-solid fa-user-plus"></i> Add User</a></li>
+<li><a routerLink="/userlist" class="dropdown-item"><i class="fa-solid fa-list"></i> User List</a></li>
+</ul>
+</div>
+
+<!-- Role -->
+
+<div class="dropdown">
+<button class="btn btn-outline-info btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-user-shield"></i> Role
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/role" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add Role</a></li>
+<li><a routerLink="/rolelist" class="dropdown-item"><i class="fa-solid fa-list"></i> Role List</a></li>
+</ul>
+</div>
+
+<!-- Loan -->
+
+<div class="dropdown">
+<button class="btn btn-outline-warning btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-hand-holding-dollar"></i> Loan
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/loan" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add Loan</a></li>
+<li><a routerLink="/loanlist" class="dropdown-item"><i class="fa-solid fa-list"></i> Loan List</a></li>
+</ul>
+</div>
+
+<!-- Travel -->
+
+<div class="dropdown">
+<button class="btn btn-outline-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-plane"></i> Travel
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/travel" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add Travel</a></li>
+<li><a routerLink="/travellist" class="dropdown-item"><i class="fa-solid fa-route"></i> Travel List</a></li>
+</ul>
+</div>
+
+<!-- Gym -->
+
+<div class="dropdown">
+<button class="btn btn-outline-success btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-dumbbell"></i> Gym
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/gym" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add Gym</a></li>
+<li><a routerLink="/gymlist" class="dropdown-item"><i class="fa-solid fa-list"></i> Gym List</a></li>
+</ul>
+</div>
+
+<!-- Holiday -->
+
+<div class="dropdown">
+<button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-calendar-days"></i> Holiday
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/holiday" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add Holiday</a></li>
+<li><a routerLink="/holidaylist" class="dropdown-item"><i class="fa-solid fa-list"></i> Holiday List</a></li>
+</ul>
+</div>
+
+<!-- Speaker -->
+
+<div class="dropdown">
+<button class="btn btn-outline-info btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-microphone"></i> Speaker
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/speaker" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add Speaker</a></li>
+<li><a routerLink="/speakerlist" class="dropdown-item"><i class="fa-solid fa-list"></i> Speaker List</a></li>
+</ul>
+</div>
+
+<!-- PlantNursery -->
+
+<div class="dropdown">
+<button class="btn btn-outline-success btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-seedling"></i> PlantNursery
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/PlantNursery" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add PlantNursery</a></li>
+<li><a routerLink="/PlantNurserylist" class="dropdown-item"><i class="fa-solid fa-list"></i> PlantNursery List</a></li>
+</ul>
+</div>
+
+
+<!-- Event -->
+
+<div class="dropdown">
+<button class="btn btn-outline-success btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-seedling"></i> Event
+</button>
+
+<ul class="dropdown-menu">
+<li><a routerLink="/Event" class="dropdown-item"><i class="fa-solid fa-plus"></i> Add Event</a></li>
+<li><a routerLink="/Eventlist" class="dropdown-item"><i class="fa-solid fa-list"></i> Event List</a></li>
+</ul>
+</div>
+
+<!-- Change Password -->
+
+<a routerLink="/changepassword" class="btn btn-warning btn-sm">
+<i class="fa-solid fa-key"></i> Change Password
+</a>
+
+<!-- Logout -->
+
+<a (click)="logout()" class="btn btn-danger btn-sm"> <i class="fa-solid fa-right-from-bracket"></i> Logout </a>
+
+</div>
+
+</nav>
+
+
+
+
+
+<!-- <div *ngIf="isLogin()" class="bg-dark text-white p-3 shadow">
+
+<h5 class="mb-3">
+<i class="fa-solid fa-circle-user text-warning"></i>
+<b>Hi, {{ form.data.firstName }} ( {{ form.data.roleName }} )</b>
+</h5>
+
+<div class="d-flex flex-wrap gap-2">
+
+User Dropdown
+<div class="dropdown">
+<button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-users"></i> User
+</button>
+
+ <ul class="dropdown-menu">
+<li>
+<a routerLink="/user" class="dropdown-item">
+<i class="fa-solid fa-user-plus"></i> Add User
+</a>
+</li>
+
+<li>
+<a routerLink="/userlist" class="dropdown-item">
+<i class="fa-solid fa-list"></i> User List
+</a>
+</li>
+</ul>
+</div>
+
+
+  Role Dropdown  -->
+<!-- <div class="dropdown">
+<button class="btn btn-outline-info btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-user-shield"></i> Role
+</button>
+
+<ul class="dropdown-menu">
+<li>
+<a routerLink="/role" class="dropdown-item">
+<i class="fa-solid fa-plus"></i> Add Role
+</a>
+</li>
+
+<li>
+<a routerLink="/rolelist" class="dropdown-item">
+<i class="fa-solid fa-list"></i> Role List
+</a>
+</li>
+</ul>
+</div> -->
+
+<!-- 
+Loan Dropdown
+<div class="dropdown">
+<button class="btn btn-outline-warning btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-hand-holding-dollar"></i> Loan
+</button>
+
+<ul class="dropdown-menu">
+<li>
+<a routerLink="/loan" class="dropdown-item">
+<i class="fa-solid fa-plus"></i> Add Loan
+</a>
+</li>
+
+<li>
+<a routerLink="/loanlist" class="dropdown-item">
+<i class="fa-solid fa-list"></i> Loan List
+</a>
+</li>
+</ul>
+</div> --> 
+
+
+<!-- Travel Dropdown -->
+<!-- <div class="dropdown">
+<button class="btn btn-outline-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-plane"></i> Travel
+</button>
+
+<ul class="dropdown-menu">
+<li>
+<a routerLink="/travel" class="dropdown-item">
+<i class="fa-solid fa-plus"></i> Add Travel
+</a>
+</li>
+
+<li>
+<a routerLink="/travellist" class="dropdown-item">
+<i class="fa-solid fa-route"></i> Travel List
+</a>
+</li>
+</ul>
+</div> -->
+
+
+<!-- Gym Dropdown -->
+<!-- <div class="dropdown">
+<button class="btn btn-outline-success btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-dumbbell"></i> Gym
+</button>
+
+<ul class="dropdown-menu">
+<li>
+<a routerLink="/gym" class="dropdown-item">
+<i class="fa-solid fa-plus"></i> Add Gym
+</a>
+</li>
+
+<li>
+<a routerLink="/gymlist" class="dropdown-item">
+<i class="fa-solid fa-list"></i> Gym List
+</a>
+</li>
+</ul>
+</div> --> 
+
+
+
+<!-- Holiday Dropdown -->
+<!-- <div class="dropdown">
+<button class="btn btn-outline-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-calendar-days"></i> Holiday
+</button>
+
+<ul class="dropdown-menu">
+<li>
+<a routerLink="/holiday" class="dropdown-item">
+<i class="fa-solid fa-plus"></i> Add Holiday
+</a>
+</li>
+
+<li>
+<a routerLink="/holidaylist" class="dropdown-item">
+<i class="fa-solid fa-calendar-days"></i> Holiday List
+</a>
+</li>
+</ul>
+</div> -->
+
+<!-- Speaker  -->
+<!-- <div class="dropdown">
+<button class="btn btn-outline-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-microphone"></i> Speaker
+</button>
+
+<ul class="dropdown-menu">
+<li>
+<a routerLink="/speaker" class="dropdown-item">
+<i class="fa-solid fa-plus"></i> Add Speaker
+</a>
+</li>
+
+<li>
+<a routerLink="/speakerlist" class="dropdown-item">
+<i class="fa-solid fa-microphone"></i> Speaker List
+</a>
+</li>
+</ul>
+</div> -->
+
+
+<!-- Plant Nursery  -->
+<!-- <div class="dropdown">
+<button class="btn btn-outline-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa-solid fa-seedling"></i> PlantNursery
+</button>
+
+<ul class="dropdown-menu">
+<li>
+<a routerLink="/PlantNursery" class="dropdown-item">
+<i class="fa-solid fa-plus"></i> Add PlantNursery
+</a>
+</li>
+
+<li>
+<a routerLink="/PlantNurserylist" class="dropdown-item">
+<i class="fa-solid fa-seedling"></i> PlantNursery List
+</a>
+</li>
+</ul>
+</div> --> 
+
+<!-- Change Password -->
+<!-- <a routerLink="/changepassword" class="btn btn-warning btn-sm">
+<i class="fa-solid fa-key"></i> Change Password
+</a> -->
+
+<!-- Logout -->
+<!-- <a (click)="logout()" class="btn btn-danger btn-sm">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a>
+
+</div>
+
+</div> -->
+
+
+<!-- 
+<div *ngIf="!isLogin()" class="bg-light p-3 shadow">
+
+<h5>
+<i class="fa-solid fa-user text-secondary"></i> Hi, Guest
+</h5>
+
+<a routerLink="/dashboard" class="btn btn-primary btn-sm me-2">
+<i class="fa-solid fa-house"></i> Dashboard
+</a>
+
+<a routerLink="/login" class="btn btn-success btn-sm">
+<i class="fa-solid fa-right-to-bracket"></i> Login
+</a>
+
+</div> -->
+
+
+
+
+
+
+
+<!-- <div *ngIf="isLogin()">
     <h3><b>Hi, {{ form.data.firstName }} ( {{ form.data.roleName }} )</b></h3>
 
     <a routerLink="/user"><b>Add User</b></a> |
@@ -31,4 +399,4 @@
     <a routerLink="/login"><b>Login</b></a>
 </div>
 
-<hr>
+<hr> -->

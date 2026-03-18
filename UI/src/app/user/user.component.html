@@ -1,5 +1,122 @@
 <app-navbar></app-navbar>
 
+<div class="container-fluid mt-6"
+     style="background-image: url('assets/Book.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            padding-top: 20px;">
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow-sm p-5 bg-white">
+        <!-- Heading -->
+        <h5 class="text-center mb-2 text-primary" *ngIf="!form.data.id">Add User</h5>
+        <h5 class="text-center mb-2 text-primary" *ngIf="form.data.id > 0">Update User</h5>
+
+        <!-- Message -->
+        <div class="text-center mb-1">
+          <div *ngIf="!form.error && form.message" class="text-success small">{{ form.message }}</div>
+          <div *ngIf="form.error && form.message" class="text-danger small">{{ form.message }}</div>
+        </div>
+
+        <!-- Form Start -->
+        <form #userForm="ngForm">
+          <!-- (Baaki pura code same rahega) -->
+          <!-- First Row: First Name + Last Name -->
+          <div class="row mb-1">
+            <div class="col-md-6">
+              <label class="form-label small mb-0">First Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-sm py-1" name="firstName" [(ngModel)]="form.data.firstName" placeholder="Enter First Name" required>
+              <small class="text-danger">{{form.inputerror.firstName}}</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-0">Last Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-sm py-1" name="lastName" [(ngModel)]="form.data.lastName" placeholder="Enter Last Name" required>
+              <small class="text-danger">{{form.inputerror.lastName}}</small>
+            </div>
+          </div>
+
+          <!-- Second Row: Login Id + Password -->
+          <div class="row mb-1">
+            <div class="col-md-6">
+              <label class="form-label small mb-0">Login Id <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-sm py-1" name="loginId" [(ngModel)]="form.data.loginId" placeholder="Enter Login ID" required>
+              <small class="text-danger">{{form.inputerror.loginId}}</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-0">Password <span class="text-danger">*</span></label>
+              <input type="password" class="form-control form-control-sm py-1" name="password" [(ngModel)]="form.data.password" placeholder="Enter Password" required>
+              <small class="text-danger">{{form.inputerror.password}}</small>
+            </div>
+          </div>
+
+          <!-- Third Row: Confirm Password + Date of Birth -->
+          <div class="row mb-1">
+            <div class="col-md-6">
+              <label class="form-label small mb-0">Confirm <span class="text-danger">*</span></label>
+              <input type="password" class="form-control form-control-sm py-1" name="confirmPassword" [(ngModel)]="form.data.confirmPassword" placeholder="Enter Confirm Password" required>
+              <small class="text-danger">{{form.inputerror.confirmPassword}}</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-0">Date of Birth <span class="text-danger">*</span></label>
+              <input type="date" class="form-control form-control-sm py-1" name="dob" [(ngModel)]="form.data.dob" [ngModel]="form.data.dob | date:'yyyy-MM-dd'" required>
+              <small class="text-danger">{{form.inputerror.dob}}</small>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="mb-1">
+            <label class="form-label small mb-0">Address <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm py-1" name="address" [(ngModel)]="form.data.address" placeholder="Enter Address here" required>
+            <small class="text-danger">{{form.inputerror.address}}</small>
+          </div>
+
+          <!-- Gender + Role -->
+          <div class="row mb-1">
+            <div class="col-md-6">
+              <label class="form-label small mb-0">Gender <span class="text-danger">*</span></label>
+              <select class="form-select form-select-sm py-1" name="gender" [(ngModel)]="form.data.gender" required>
+                <option value="undefined">------------Select------------</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <small class="text-danger">{{form.inputerror.gender}}</small>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-0">Role <span class="text-danger">*</span></label>
+              <select class="form-select form-select-sm py-1" name="roleId" [(ngModel)]="form.data.roleId" required>
+                <option value="undefined">------------Select------------</option>
+                <option *ngFor="let obj of form.preload.roleList" [value]="obj.id">{{obj.name}}</option>
+              </select>
+              <small class="text-danger">{{form.inputerror.roleId}}</small>
+            </div>
+          </div>
+
+          <!-- Mobile Number -->
+          <div class="mb-1">
+            <label class="form-label small mb-0">Mobile <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm py-1" name="mobileNumber" maxlength="10" [(ngModel)]="form.data.mobileNumber" placeholder="Enter Mobile No." required>
+            <small class="text-danger">{{form.inputerror.mobileNumber}}</small>
+          </div>
+
+          <!-- Submit Button -->
+          <div>
+            <button type="button" class="btn btn-sm btn-primary" (click)="submit()">Save</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- <app-navbar></app-navbar>
+
 <div align="center">
     <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add User</h1>
     <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update User</h1>
@@ -92,4 +209,4 @@
     </table>
 </div>
 
-<app-footer></app-footer>
+<app-footer></app-footer> -->

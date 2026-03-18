@@ -12,15 +12,18 @@ import { GymComponent } from "./gym/gym.component";
 import { GymListComponent } from "./gym/gym-list.component";
 import { TravelComponent } from "./travel/travel.component";
 import { TravelListComponent } from "./travel/travel-list.component";
-import { ChangepasswordComponent } from "./user/changepassword.component";
-import { ForgetpasswordComponent } from "./login/forgetpassword.component";
-import { NgModule } from "@angular/core";
 import { HolidayComponent } from "./holiday/holiday.component";
 import { HolidayListComponent } from "./holiday/holiday-list.component";
 import { SpeakerComponent } from "./speaker/speaker.component";
 import { SpeakerListComponent } from "./speaker/speaker-list.component";
 import { PlantNurseryComponent } from "./plantnursery/plantnursery.component";
 import { PlantNurseryListComponent } from "./plantnursery/plantnursery-list.component";
+import { ChangepasswordComponent } from "./user/changepassword.component";
+import { NgModule } from "@angular/core";
+import { ForgetpasswordComponent } from "./login/forgetpassword.component";
+import { EventListComponent } from "./event/event-list.component";
+import { EventComponent } from "./event/event.component";
+
 
 
 
@@ -140,6 +143,18 @@ const routes: Routes = [
   {
     path:'PlantNursery/:id',
     component: PlantNurseryComponent
+  },
+  {
+    path:'Event',
+    component: EventComponent
+ },
+ {
+   path:'Eventlist',
+   component: EventListComponent
+  },
+  {
+    path:'event/:id',
+    component: EventComponent
   },
   {
     path: 'changepassword',

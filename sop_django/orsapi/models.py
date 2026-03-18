@@ -163,3 +163,24 @@ class PlantNursery(models.Model):
 
     class Meta:
         db_table = 'sos_plant_nursery'
+
+
+class Event(models.Model):
+    participantName = models.CharField(max_length=50)
+    eventName = models.CharField(max_length=50)
+    email = models.EmailField(max_length=30)
+    registrationDate = models.DateField(max_length=15)
+
+    def to_json(self):
+        data ={
+            'id': self.id,
+            'participantName': self.participantName,
+            'eventNAme': self.eventName,
+            'email': self.email,
+            'registrationDate': self.registrationDate
+        }
+
+        return data
+
+    class Meta:
+        db_table = 'sos_event'

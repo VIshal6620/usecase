@@ -33,6 +33,8 @@ import { SpeakerComponent } from './speaker/speaker.component';
 import { SpeakerListComponent } from './speaker/speaker-list.component';
 import { PlantNurseryListComponent } from './plantnursery/plantnursery-list.component'
 import { PlantNurseryComponent } from './plantnursery/plantnursery.component';
+import { EventComponent } from './event/event.component';
+import { EventListComponent } from './event/event-list.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { PlantNurseryComponent } from './plantnursery/plantnursery.component';
     SpeakerComponent,
     SpeakerListComponent,
     PlantNurseryComponent,
-    PlantNurseryListComponent
+    PlantNurseryListComponent,
+    EventComponent,
+    EventListComponent
  ],
   imports: [
     BrowserModule,
