@@ -184,3 +184,23 @@ class Event(models.Model):
 
     class Meta:
         db_table = 'sos_event'
+
+
+class Reward(models.Model):
+    rewardCode = models.CharField(max_length=50)
+    rewardName = models.CharField(max_length=50)
+    rewardAmount = models.CharField(max_length=50)
+    rewardStatus = models.CharField(max_length=50)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'rewardCode': self.rewardCode,
+            'rewardName': self.rewardName,
+            'rewardAmount': self.rewardAmount,
+            'rewardStatus': self.rewardStatus
+        }
+
+        return data
+
+    class Meta: db_table = 'sos_reward'

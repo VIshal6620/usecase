@@ -23,6 +23,9 @@ import { NgModule } from "@angular/core";
 import { ForgetpasswordComponent } from "./login/forgetpassword.component";
 import { EventListComponent } from "./event/event-list.component";
 import { EventComponent } from "./event/event.component";
+import { RewardComponent } from "./reward/reward.component";
+import { RewardListComponent } from "./reward/reward-list.component";
+
 
 
 
@@ -54,7 +57,7 @@ const routes: Routes = [
     path: 'role',
     component: RoleComponent
   },
-  
+
   {
     path: 'userlist',
     component: UserListComponent
@@ -71,90 +74,100 @@ const routes: Routes = [
     path: 'role/:id',
     component: RoleComponent
   },
- 
+
   {
-   path: 'loan',
-   component: LoanComponent
+    path: 'loan',
+    component: LoanComponent
   },
   {
-   path: 'loanlist',
-   component: LoanListComponent
+    path: 'loanlist',
+    component: LoanListComponent
   },
+  {
+    path: 'loan/:id',
+    component: LoanComponent
+  },
+  {
+    path: 'gym',
+    component: GymComponent
+  },
+  {
+    path: 'gymlist',
+    component: GymListComponent
+  },
+  {
+    path: 'gym/:id',
+    component: GymComponent
+  },
+  {
+    path: 'travel',
+    component: TravelComponent
+  },
+  {
+    path: 'travellist',
+    component: TravelListComponent
+  },
+  {
+    path: 'travel/:id',
+    component: TravelComponent
+  },
+  {
+    path: 'holiday',
+    component: HolidayComponent
+  },
+  {
+    path: 'holidaylist',
+    component: HolidayListComponent
+  },
+  {
+    path: 'holiday/:id',
+    component: HolidayComponent
+  },
+  {
+    path: 'speaker',
+    component: SpeakerComponent
+  },
+  {
+    path: 'speakerlist',
+    component: SpeakerListComponent
+  },
+  {
+    path: 'speaker/:id',
+    component: SpeakerComponent
+  },
+  {
+    path: 'PlantNursery',
+    component: PlantNurseryComponent
+  },
+  {
+    path: 'PlantNurserylist',
+    component: PlantNurseryListComponent
+  },
+  {
+    path: 'PlantNursery/:id',
+    component: PlantNurseryComponent
+  },
+  {
+    path: 'Event',
+    component: EventComponent
+  },
+  {
+    path: 'Eventlist',
+    component: EventListComponent
+  },
+  {
+    path: 'event/:id',
+    component: EventComponent
+  },
+  { path: 'reward', 
+    component: RewardComponent },
+  {
+     path: 'rewardlist',
+   component: RewardListComponent
+   },
   { 
-   path: 'loan/:id',
-   component: LoanComponent
-  },
-  {
-   path: 'gym',
-   component: GymComponent
-  },
-  {
-   path:'gymlist',
-   component: GymListComponent
-  },
-  {
-   path:'gym/:id',
-   component: GymComponent
-  },
-  {
-    path:'travel',
-    component: TravelComponent
-  },
- {
-   path:'travellist',
-   component: TravelListComponent
-  },
-  {
-    path:'travel/:id',
-    component: TravelComponent
-  },
-  {
-    path:'holiday',
-    component: HolidayComponent
-  },
- {
-   path:'holidaylist',
-   component: HolidayListComponent
-  },
-  {
-    path:'holiday/:id',
-    component: HolidayComponent
-  },
-  {
-    path:'speaker',
-    component: SpeakerComponent
-  },
- {
-   path:'speakerlist',
-   component: SpeakerListComponent
-  },
-  {
-    path:'speaker/:id',
-    component: SpeakerComponent
-  },
-  {
-    path:'PlantNursery',
-    component: PlantNurseryComponent
-  },
- {
-   path:'PlantNurserylist',
-   component: PlantNurseryListComponent
-  },
-  {
-    path:'PlantNursery/:id',
-    component: PlantNurseryComponent
-  },
-  {
-    path:'Event',
-    component: EventComponent
- },
- {
-   path:'Eventlist',
-   component: EventListComponent
-  },
-  {
-    path:'event/:id',
-    component: EventComponent
+  path: 'reward/:id',
+   component: RewardComponent 
   },
   {
     path: 'changepassword',
@@ -162,15 +175,15 @@ const routes: Routes = [
   },
   {
     path: 'forgetpassword',
-    component:ForgetpasswordComponent
+    component: ForgetpasswordComponent
   }
 
 ];
 
 @NgModule({
-  
+
   // imports: [RouterModule.forRoot(routes)],
-  
+
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })

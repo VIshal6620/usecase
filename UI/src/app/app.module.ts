@@ -35,6 +35,8 @@ import { PlantNurseryListComponent } from './plantnursery/plantnursery-list.comp
 import { PlantNurseryComponent } from './plantnursery/plantnursery.component';
 import { EventComponent } from './event/event.component';
 import { EventListComponent } from './event/event-list.component';
+import { RewardComponent } from './reward/reward.component';
+import { RewardListComponent } from './reward/reward-list.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { EventListComponent } from './event/event-list.component';
     PlantNurseryComponent,
     PlantNurseryListComponent,
     EventComponent,
-    EventListComponent
+    EventListComponent,
+    RewardComponent,
+    RewardListComponent
  ],
   imports: [
     BrowserModule,
