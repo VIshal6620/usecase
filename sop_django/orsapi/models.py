@@ -204,3 +204,22 @@ class Reward(models.Model):
         return data
 
     class Meta: db_table = 'sos_reward'
+
+class Rejection(models.Model):
+    rejectionCode = models.CharField(max_length=50)
+    requestName = models.CharField(max_length=50)
+    rejectionReason = models.CharField(max_length=50)
+    rejectionStatus = models.CharField(max_length=50)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'rejectionCode': self.rejectionCode,
+            'requestName': self.requestName,
+            'rejectionReason': self.rejectionReason,
+            'rejectionStatus': self.rejectionStatus
+        }
+
+        return data
+
+    class Meta: db_table = 'sos_rejection'

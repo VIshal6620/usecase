@@ -16,6 +16,7 @@ from .ctl.SpeakerCtl import SpeakerCtl
 from .ctl.PlantNurseryCtl import PlantNurseryCtl
 from .ctl.EventCtl import EventCtl
 from .ctl.RewardCtl import RewardCtl
+from .ctl.RejectionCtl import RejectionCtl
 
 
 @csrf_exempt

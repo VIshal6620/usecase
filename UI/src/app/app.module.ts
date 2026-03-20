@@ -37,6 +37,8 @@ import { EventComponent } from './event/event.component';
 import { EventListComponent } from './event/event-list.component';
 import { RewardComponent } from './reward/reward.component';
 import { RewardListComponent } from './reward/reward-list.component';
+import { RejectionComponent } from './rejection/rejection.component';
+import { RejectionListComponent } from './rejection/rejection-list.component';
 
 
 @NgModule({
@@ -68,7 +70,9 @@ import { RewardListComponent } from './reward/reward-list.component';
     EventComponent,
     EventListComponent,
     RewardComponent,
-    RewardListComponent
+    RewardListComponent,
+    RejectionComponent,
+    RejectionListComponent
  ],
   imports: [
     BrowserModule,

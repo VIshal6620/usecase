@@ -25,6 +25,8 @@ import { EventListComponent } from "./event/event-list.component";
 import { EventComponent } from "./event/event.component";
 import { RewardComponent } from "./reward/reward.component";
 import { RewardListComponent } from "./reward/reward-list.component";
+import { RejectionComponent } from "./rejection/rejection.component";
+import { RejectionListComponent } from "./rejection/rejection-list.component";
 
 
 
@@ -168,6 +170,16 @@ const routes: Routes = [
   { 
   path: 'reward/:id',
    component: RewardComponent 
+  },
+  { path: 'rejection', 
+    component: RejectionComponent },
+  {
+     path: 'rejectionlist',
+   component: RejectionListComponent
+   },
+  { 
+  path: 'rejection/:id',
+   component: RejectionComponent 
   },
   {
     path: 'changepassword',
