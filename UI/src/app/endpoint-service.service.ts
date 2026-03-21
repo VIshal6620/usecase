@@ -19,4 +19,5 @@ export class EndpointServiceService {
   public EVENT = this.SERVER_URL + "/Event"
   public REWARD = this.SERVER_URL + "/Reward"
   public REJECTION = this.SERVER_URL + "/Rejection"
+  public BLOODDONATION = this.SERVER_URL + "/BloodDonation"
 }

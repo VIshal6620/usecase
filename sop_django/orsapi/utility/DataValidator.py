@@ -93,3 +93,11 @@ class DataValidator:
             return True
         else:
             return False
+
+    @classmethod
+    def isAllCharAllowed(cls, val):
+        import re
+        if re.match(r"^[A-Za-z0-9@#\$%\^\&*\)\(+=._\-!\s]+$", val):
+            return False  # valid
+        else:
+            return True  # invalid

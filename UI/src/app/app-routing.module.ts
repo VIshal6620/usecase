@@ -27,6 +27,8 @@ import { RewardComponent } from "./reward/reward.component";
 import { RewardListComponent } from "./reward/reward-list.component";
 import { RejectionComponent } from "./rejection/rejection.component";
 import { RejectionListComponent } from "./rejection/rejection-list.component";
+import { BloodDonationComponent } from "./blood-donation/blood-donation.component";
+import { BloodDonationListComponent } from "./blood-donation/blood-donation-list.component";
 
 
 
@@ -180,6 +182,16 @@ const routes: Routes = [
   { 
   path: 'rejection/:id',
    component: RejectionComponent 
+  },
+  { path: 'BloodDonation', 
+    component: BloodDonationComponent },
+  {
+     path: 'BloodDonationlist',
+   component: BloodDonationListComponent
+   },
+  { 
+  path: 'BloodDonation/:id',
+   component: BloodDonationComponent 
   },
   {
     path: 'changepassword',

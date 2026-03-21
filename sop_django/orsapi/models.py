@@ -223,3 +223,22 @@ class Rejection(models.Model):
         return data
 
     class Meta: db_table = 'sos_rejection'
+
+class BloodDonation(models.Model):
+    donorName = models.CharField(max_length=50)
+    bloodGroup = models.CharField(max_length=10)
+    donationDate = models.DateField(max_length=15)
+    contactNumber = models.CharField(max_length=15)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'donorName': self.donorName,
+            'bloodGroup': self.bloodGroup,
+            'donationDate': self.donationDate,
+            'contactNumber': self.contactNumber
+        }
+
+        return data
+
+    class Meta: db_table = 'sos_blood_donation'

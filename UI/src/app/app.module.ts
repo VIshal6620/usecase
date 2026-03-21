@@ -39,6 +39,8 @@ import { RewardComponent } from './reward/reward.component';
 import { RewardListComponent } from './reward/reward-list.component';
 import { RejectionComponent } from './rejection/rejection.component';
 import { RejectionListComponent } from './rejection/rejection-list.component';
+import { BloodDonationComponent } from './blood-donation/blood-donation.component';
+import { BloodDonationListComponent } from './blood-donation/blood-donation-list.component';
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { RejectionListComponent } from './rejection/rejection-list.component';
     RewardComponent,
     RewardListComponent,
     RejectionComponent,
-    RejectionListComponent
+    RejectionListComponent,
+    BloodDonationComponent,
+    BloodDonationListComponent,
  ],
   imports: [
     BrowserModule,
