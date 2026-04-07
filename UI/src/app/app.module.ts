@@ -41,6 +41,8 @@ import { RejectionComponent } from './rejection/rejection.component';
 import { RejectionListComponent } from './rejection/rejection-list.component';
 import { BloodDonationComponent } from './blood-donation/blood-donation.component';
 import { BloodDonationListComponent } from './blood-donation/blood-donation-list.component';
+import { SecurityComponent } from './security/security.component';
+import { SecurityListComponent } from './Security/security-list.component';
 
 
 @NgModule({
@@ -77,6 +79,8 @@ import { BloodDonationListComponent } from './blood-donation/blood-donation-list
     RejectionListComponent,
     BloodDonationComponent,
     BloodDonationListComponent,
+    SecurityComponent,
+    SecurityListComponent,
  ],
   imports: [
     BrowserModule,

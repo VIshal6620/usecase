@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<div align="center">
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Security</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Security</h1>
+
+    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
+        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
+        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    </div>
+
+    <table>
+        <tr>
+            <th align="left">StaffName<span style="color: red">*</span></th>
+            <td><input type="text" name="StaffName" [(ngModel)]="form.data.StaffName" placeholder="Enter StaffName"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.StaffName}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Shift<span style="color: red">*</span></th>
+            <td><input type="text" name="shift" [(ngModel)]="form.data.shift" placeholder="Enter shift"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.shift}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Salary<span style="color: red">*</span></th>
+            <td><input type="text" name="salary" [(ngModel)]="form.data.salary" placeholder="Enter salary" style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.salary}}</td>
+        </tr>
+
+    
+        <tr></tr>
+
+        <tr>
+            <th></th>
+            <td align="left" colspan="2">
+                <button (click)="submit()">save</button> &nbsp;
+            </td>
+        </tr>
+    </table>
+</div>
+
+<app-footer></app-footer>

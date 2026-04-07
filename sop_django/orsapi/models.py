@@ -242,3 +242,19 @@ class BloodDonation(models.Model):
         return data
 
     class Meta: db_table = 'sos_blood_donation'
+
+class Security(models.Model):
+    StaffName = models.CharField(max_length=50)
+    shift = models.CharField(max_length=30)
+    salary = models.CharField(max_length=30)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'staffName': self.StaffName,
+            'shift': self.shift
+        }
+
+        return data
+
+    class Meta: db_table = 'sos_security'

@@ -29,6 +29,8 @@ import { RejectionComponent } from "./rejection/rejection.component";
 import { RejectionListComponent } from "./rejection/rejection-list.component";
 import { BloodDonationComponent } from "./blood-donation/blood-donation.component";
 import { BloodDonationListComponent } from "./blood-donation/blood-donation-list.component";
+import { SecurityComponent } from "./security/security.component";
+import { SecurityListComponent } from "./Security/security-list.component";
 
 
 
@@ -192,6 +194,16 @@ const routes: Routes = [
   { 
   path: 'BloodDonation/:id',
    component: BloodDonationComponent 
+  },
+  { path: 'Security', 
+    component: SecurityComponent },
+  {
+     path: 'Securitylist',
+   component: SecurityListComponent
+   },
+  { 
+  path: 'Security/:id',
+   component: SecurityComponent 
   },
   {
     path: 'changepassword',
