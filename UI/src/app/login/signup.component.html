@@ -1,82 +1,179 @@
-<app-navbar></app-navbar>
+<app-navbar style="position: relative; z-index: 10;"></app-navbar>
 
-<div align="center">
-    <h1 align="center" style="margin-bottom: 5px; color: navy">User Registration</h1>
+<div class="d-flex justify-content-center align-items-center py-3"
+     style="min-height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+  <!-- Dark overlay -->
+    <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 0;"></div>
+
+
+  <div class="card shadow-lg p-3 position-relative" style="max-width: 750px; width: 100%; border-radius: 12px; z-index: 1; background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);">
+
+    <h2 class="text-center mb-1" style="color: navy; font-size: 18px;">User Registration</h2>
+
+    <div style="min-height: 22px;" class="text-center mb-2">
+      <small class="text-success fw-semibold" *ngIf="!form.error && form.message">{{ form.message }}</small>
+      <small class="text-danger fw-semibold" *ngIf="form.error && form.message">{{ form.message }}</small>
     </div>
 
-    <table>
-         <tr>
-            <th align="left">First Name<span style="color: red">*</span></th>
-            <td><input type="text" name="firstName" [(ngModel)]="form.data.firstName" placeholder="Enter First Name"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.firstName}}</td>
-        </tr>
+    <div class="row g-2">
 
-        <tr>
-            <th align="left">Last Name<span style="color: red">*</span></th>
-            <td><input type="text" name="lastName" [(ngModel)]="form.data.lastName" placeholder="Enter Last Name"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.lastName}}</td>
-        </tr>
+      <!-- First Name -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-id-card me-1"></i>First Name <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-user fa-sm"></i></span>
+            <input type="text" class="form-control form-control-sm" name="firstName"
+                   [(ngModel)]="form.data.firstName" placeholder="Enter First Name">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.firstName }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th align="left">Login Id<span style="color: red">*</span></th>
-            <td><input type="text" name="loginId" [(ngModel)]="form.data.loginId" placeholder="Enter Login ID"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.loginId}}</td>
-        </tr>
+      <!-- Last Name -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-id-card me-1"></i>Last Name <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-user fa-sm"></i></span>
+            <input type="text" class="form-control form-control-sm" name="lastName"
+                   [(ngModel)]="form.data.lastName" placeholder="Enter Last Name">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.lastName }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th align="left">Password<span style="color: red">*</span></th>
-            <td><input type="password" name="password" [(ngModel)]="form.data.password" placeholder="Enter Password"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.password}}</td>
-        </tr>
+      <!-- Login ID -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-fingerprint me-1"></i>Login ID <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-at fa-sm"></i></span>
+            <input type="text" class="form-control form-control-sm" name="loginId"
+                   [(ngModel)]="form.data.loginId" placeholder="Enter Login ID">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.loginId }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th align="left">Confirm<span style="color: red">*</span></th>
-            <td><input type="password" name="confirmPassword" [(ngModel)]="form.data.confirmPassword" placeholder="Enter Confirm Password"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.confirmPassword}}</td>
-        </tr>
+      <!-- Password -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-lock me-1"></i>Password <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-key fa-sm"></i></span>
+            <input type="password" class="form-control form-control-sm" name="password"
+                   [(ngModel)]="form.data.password" placeholder="Enter Password">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.password }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th align="left">Date of Birth<span style="color: red">*</span></th>
-            <td><input type="date" name="dob" [(ngModel)]="form.data.dob" placeholder="Select Date of Birth" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.dob}}</td>
-        </tr>
+      <!-- Confirm Password -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-lock me-1"></i>Confirm Password <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-shield-halved fa-sm"></i></span>
+            <input type="password" class="form-control form-control-sm" name="confirmPassword"
+                   [(ngModel)]="form.data.confirmPassword" placeholder="Enter Confirm Password">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.confirmPassword }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th align="left">Address<span style="color: red">*</span></th>
-            <td><input type="text" name="loginId" [(ngModel)]="form.data.address" placeholder="Enter Address here"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.address}}</td>
-        </tr>
+      <!-- Date of Birth -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-calendar me-1"></i>Date of Birth <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-calendar-days fa-sm"></i></span>
+            <input type="date" class="form-control form-control-sm" name="dob"
+                   [(ngModel)]="form.data.dob">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.dob }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th align="left">Gender<span style="color: red">*</span></th>
-            <td>
-                <select name="gender" [(ngModel)]="form.data.gender" style="width: 170px;">
-                    <option value="undefined">------------Select------------</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-            </td>
-            <td style="position: fixed; color: red;">{{form.inputerror.gender}}</td>
-        </tr>
+      <!-- Address -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-location-dot me-1"></i>Address <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-map-marker-alt fa-sm"></i></span>
+            <input type="text" class="form-control form-control-sm" name="address"
+                   [(ngModel)]="form.data.address" placeholder="Enter Address">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.address }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th align="left">Mobile<span style="color: red">*</span></th>
-            <td><input type="text" name="mobileNumber" [(ngModel)]="form.data.mobileNumber" maxlength="10" placeholder="Enter Mobile No."></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.mobileNumber}}</td>
-        </tr>
+      <!-- Gender -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-venus-mars me-1"></i>Gender <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-person fa-sm"></i></span>
+            <select class="form-select form-select-sm" name="gender" [(ngModel)]="form.data.gender"
+                    style="border-radius: 0 6px 6px 0; border-left: none;">
+              <option value="">------------ Select ------------</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.gender }}</small>
+        </div>
+      </div>
 
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="signUp()">Sign Up</button> &nbsp;
-                <button (click)="reset()">Reset</button>
-            </td>
-        </tr>
-    </table>
+      <!-- Mobile -->
+      <div class="col-12">
+        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
+          <i class="fa fa-phone me-1"></i>Mobile <span class="text-danger">*</span>
+        </label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-mobile-screen-button fa-sm"></i></span>
+            <input type="text" class="form-control form-control-sm" name="mobileNumber"
+                   [(ngModel)]="form.data.mobileNumber" maxlength="10"
+                   placeholder="Enter Mobile No.">
+          </div>
+          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.mobileNumber }}</small>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="col-12 d-flex gap-2 mt-1">
+        <button class="btn btn-primary btn-sm" (click)="signUp()">
+          <i class="fa fa-user-plus me-1"></i>Sign Up
+        </button>
+        <button class="btn btn-outline-secondary btn-sm" (click)="reset()">
+          <i class="fa fa-rotate-left me-1"></i>Reset
+        </button>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>

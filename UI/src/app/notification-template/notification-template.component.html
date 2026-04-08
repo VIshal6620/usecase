@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+<div align="center">
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add NotificationTemplate</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update NotificationTemplate</h1>
+
+    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
+        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
+        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    </div>
+
+    <table>
+        <tr>
+            <th align="left">TemplateCode<span style="color: red">*</span></th>
+            <td><input type="text" name="templateCode" [(ngModel)]="form.data.templateCode" placeholder="Enter templateCode"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.templateCode}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Title<span style="color: red">*</span></th>
+            <td><input type="text" name="title" [(ngModel)]="form.data.title" placeholder="Enter title"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.title}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Content<span style="color: red">*</span></th>
+            <td><input type="text" name="content" [(ngModel)]="form.data.content" placeholder="Enter content" style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.content}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Status<span style="color: red">*</span></th>
+            <td><input type="text" name="status" [(ngModel)]="form.data.status" placeholder="Enter status" style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.status}}</td>
+        </tr>
+
+        <tr></tr>
+
+        <tr>
+            <th></th>
+            <td align="left" colspan="2">
+                <button (click)="submit()">save</button> &nbsp;
+            </td>
+        </tr>
+    </table>
+</div>
+
+<app-footer></app-footer>

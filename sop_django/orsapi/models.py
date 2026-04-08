@@ -258,3 +258,23 @@ class Security(models.Model):
         return data
 
     class Meta: db_table = 'sos_security'
+
+
+class NotificationTemplate(models.Model):
+    templateCode = models.CharField(max_length=30)
+    title = models.CharField(max_length=30)
+    content = models.CharField(max_length=60)
+    status = models.CharField(max_length=50)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'templateCode': self.templateCode,
+            'title': self.title,
+            'content': self.content,
+            'status': self.status
+        }
+
+        return data
+
+    class Meta: db_table = 'sos_notification_template'

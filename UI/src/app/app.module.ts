@@ -42,7 +42,9 @@ import { RejectionListComponent } from './rejection/rejection-list.component';
 import { BloodDonationComponent } from './blood-donation/blood-donation.component';
 import { BloodDonationListComponent } from './blood-donation/blood-donation-list.component';
 import { SecurityComponent } from './security/security.component';
-import { SecurityListComponent } from './Security/security-list.component';
+import { SecurityListComponent } from './security/security-list.component';
+import { NotificationTemplateComponent } from './notification-template/notification-template.component';
+import { NotificationTemplateListComponent } from './notification-template/notification-template-list.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { SecurityListComponent } from './Security/security-list.component';
     BloodDonationListComponent,
     SecurityComponent,
     SecurityListComponent,
+    NotificationTemplateComponent,
+    NotificationTemplateListComponent,
  ],
   imports: [
     BrowserModule,
