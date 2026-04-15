@@ -251,7 +251,7 @@ class Security(models.Model):
     def to_json(self):
         data = {
             'id': self.id,
-            'staffName': self.StaffName,
+            'StaffName': self.StaffName,
             'shift': self.shift
         }
 

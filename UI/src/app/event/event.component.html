@@ -1,47 +1,129 @@
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Event</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Event</h1>
+<div align="center"
+     style="min-height: 90vh;
+            padding: 40px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    <!-- Heading -->
+    <h1 *ngIf="!form.data.id" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-calendar-plus"></i> Add Event
+    </h1>
+
+    <h1 *ngIf="form.data.id>0" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-pen-to-square"></i> Update Event
+    </h1>
+
+    <!-- Message -->
+    <div style="height: 25px; margin-bottom: 15px;">
+        <h3 class="text-success m-0" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h3>
+        <h3 class="text-danger m-0" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h3>
     </div>
 
-    <table>
-        <tr>
-            <th align="left">ParticipantName<span style="color: red">*</span></th>
-            <td><input type="text" name="participantName" [(ngModel)]="form.data.participantName" placeholder="Enter participantName"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.participantName}}</td>
-        </tr>
+    <!-- Table Form -->
+    <table class="table table-bordered shadow"
+           style="background:white; border-radius:10px; width:420px; overflow:hidden;">
 
+        <!-- Participant Name -->
         <tr>
-            <th align="left">eventName<span style="color: red">*</span></th>
-            <td><input type="text" name="eventName" [(ngModel)]="form.data.eventName" placeholder="Enter eventName"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.eventName}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">Email<span style="color: red">*</span></th>
-            <td><input type="email" name="email" [(ngModel)]="form.data.email" placeholder="Enter Email" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.email}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">registrationDate<span style="color: red">*</span></th>
-            <td><input type="date" name="registrationDate" [(ngModel)]="form.data.registrationDate" placeholder="Enter registrationDate" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.registrationDate}}</td>
-        </tr>
-
-        <tr></tr>
-
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
+            <th class="text-start p-2">
+                <i class="fa-solid fa-user"></i>
+                ParticipantName <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="participantName"
+                       [(ngModel)]="form.data.participantName"
+                       placeholder="Enter Participant Name">
             </td>
         </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.participantName}}
+            </td>
+        </tr>
+
+        <!-- Event Name -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-star"></i>
+                EventName <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="eventName"
+                       [(ngModel)]="form.data.eventName"
+                       placeholder="Enter Event Name">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.eventName}}
+            </td>
+        </tr>
+
+        <!-- Email -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-envelope"></i>
+                Email <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="email"
+                       class="form-control form-control-sm"
+                       name="email"
+                       [(ngModel)]="form.data.email"
+                       placeholder="Enter Email">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.email}}
+            </td>
+        </tr>
+
+        <!-- Registration Date -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-calendar-days"></i>
+                RegistrationDate <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="date"
+                       class="form-control form-control-sm"
+                       name="registrationDate"
+                       [(ngModel)]="form.data.registrationDate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.registrationDate}}
+            </td>
+        </tr>
+
+        <!-- Button -->
+        <tr>
+            <td></td>
+            <td class="p-3">
+                <button class="btn btn-primary btn-sm px-4"
+                        (click)="submit()">
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+            </td>
+        </tr>
+
     </table>
 </div>
 

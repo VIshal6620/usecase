@@ -1,48 +1,118 @@
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Reward</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Reward</h1>
+<!-- Background -->
+<div class="container-fluid d-flex justify-content-center align-items-center"
+     style="min-height: 90vh;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+  <!-- Card -->
+  <div class="card shadow-lg p-4" style="width: 420px; border-radius: 15px;">
+
+    <!-- Heading -->
+    <h2 class="text-center text-primary fw-bold mb-3">
+      <i class="fa-solid fa-gift"></i>
+      {{ form.data.id > 0 ? 'Update Reward' : 'Add Reward' }}
+    </h2>
+
+    <!-- Message -->
+    <div class="text-center mb-2">
+      <div *ngIf="!form.error && form.message" class="alert alert-success p-1">
+        {{ form.message }}
+      </div>
+      <div *ngIf="form.error && form.message" class="alert alert-danger p-1">
+        {{ form.message }}
+      </div>
     </div>
 
-    <table>
-        <tr>
-            <th align="left">rewardCode<span style="color: red">*</span></th>
-            <td><input type="text" name="rewardCode" [(ngModel)]="form.data.rewardCode" placeholder="Enter rewardCode"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.rewardCode}}</td>
-        </tr>
+    <!-- Form -->
+    <form>
 
-        <tr>
-            <th align="left">rewardName<span style="color: red">*</span></th>
-            <td><input type="text" name="rewardName" [(ngModel)]="form.data.rewardName" placeholder="Enter rewardName"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.rewardName}}</td>
-        </tr>
+      <!-- Reward Code -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">
+          Reward Code <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-barcode"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 name="rewardCode"
+                 [(ngModel)]="form.data.rewardCode"
+                 placeholder="Enter Reward Code">
+        </div>
+        <small class="text-danger">{{ form.inputerror.rewardCode }}</small>
+      </div>
 
-        <tr>
-            <th align="left">rewardAmount<span style="color: red">*</span></th>
-            <td><input type="text" name="rewardAmount" [(ngModel)]="form.data.rewardAmount" placeholder="Enter rewardAmount" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.rewardAmount}}</td>
-        </tr>
+      <!-- Reward Name -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">
+          Reward Name <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-tag"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 name="rewardName"
+                 [(ngModel)]="form.data.rewardName"
+                 placeholder="Enter Reward Name">
+        </div>
+        <small class="text-danger">{{ form.inputerror.rewardName }}</small>
+      </div>
 
-        <tr>
-            <th align="left">rewardStatus<span style="color: red">*</span></th>
-            <td><input type="text" name="rewardStatus" [(ngModel)]="form.data.rewardStatus" placeholder="Enter rewardStatus" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.rewardStatus}}</td>
-        </tr>
+      <!-- Reward Amount -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">
+          Reward Amount <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+          </span>
+          <input type="number"
+                 class="form-control"
+                 name="rewardAmount"
+                 [(ngModel)]="form.data.rewardAmount"
+                 placeholder="Enter Amount">
+        </div>
+        <small class="text-danger">{{ form.inputerror.rewardAmount }}</small>
+      </div>
 
-        <tr></tr>
+      <!-- Reward Status -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">
+          Reward Status <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-circle-check"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 name="rewardStatus"
+                 [(ngModel)]="form.data.rewardStatus"
+                 placeholder="Enter Status (Active/Inactive)">
+        </div>
+        <small class="text-danger">{{ form.inputerror.rewardStatus }}</small>
+      </div>
 
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-            </td>
-        </tr>
-    </table>
+      <!-- Button -->
+      <div class="text-center">
+        <button type="button"
+                class="btn btn-primary px-4"
+                (click)="submit()">
+          <i class="fa-solid fa-floppy-disk"></i> Save
+        </button>
+      </div>
+
+    </form>
+
+  </div>
 </div>
 
 <app-footer></app-footer>

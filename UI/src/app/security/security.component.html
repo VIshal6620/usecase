@@ -1,43 +1,106 @@
+<!-- Bootstrap + FontAwesome -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Security</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Security</h1>
+<div class="container mt-5">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+  <div class="card shadow-lg p-4 mx-auto" style="max-width: 600px; border-radius: 15px;">
+
+    <!-- Heading -->
+    <h3 class="text-center text-primary fw-bold mb-3">
+      <i class="fa-solid fa-shield-halved"></i>
+      {{ form.data.id > 0 ? 'Update Security' : 'Add Security' }}
+    </h3>
+
+    <!-- Message -->
+    <div class="text-center mb-2">
+      <div *ngIf="!form.error && form.message" class="alert alert-success py-1">
+        {{ form.message }}
+      </div>
+      <div *ngIf="form.error && form.message" class="alert alert-danger py-1">
+        {{ form.message }}
+      </div>
     </div>
 
-    <table>
-        <tr>
-            <th align="left">StaffName<span style="color: red">*</span></th>
-            <td><input type="text" name="StaffName" [(ngModel)]="form.data.StaffName" placeholder="Enter StaffName"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.StaffName}}</td>
-        </tr>
+    <!-- Form Table -->
+    <table class="table table-borderless">
 
-        <tr>
-            <th align="left">Shift<span style="color: red">*</span></th>
-            <td><input type="text" name="shift" [(ngModel)]="form.data.shift" placeholder="Enter shift"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.shift}}</td>
-        </tr>
+      <!-- Staff Name -->
+      <tr>
+        <th class="text-start">
+          Staff Name <span class="text-danger">*</span>
+        </th>
+        <td>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-user"></i>
+            </span>
+            <input type="text"
+                   class="form-control"
+                   name="StaffName"
+                   [(ngModel)]="form.data.StaffName"
+                   placeholder="Enter Staff Name">
+          </div>
+          <small class="text-danger">{{form.inputerror.StaffName}}</small>
+        </td>
+      </tr>
 
-        <tr>
-            <th align="left">Salary<span style="color: red">*</span></th>
-            <td><input type="text" name="salary" [(ngModel)]="form.data.salary" placeholder="Enter salary" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.salary}}</td>
-        </tr>
+      <!-- Shift -->
+      <tr>
+        <th class="text-start">
+          Shift <span class="text-danger">*</span>
+        </th>
+        <td>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-clock"></i>
+            </span>
+            <input type="text"
+                   class="form-control"
+                   name="shift"
+                   [(ngModel)]="form.data.shift"
+                   placeholder="Enter Shift">
+          </div>
+          <small class="text-danger">{{form.inputerror.shift}}</small>
+        </td>
+      </tr>
 
-    
-        <tr></tr>
+      <!-- Salary -->
+      <tr>
+        <th class="text-start">
+          Salary <span class="text-danger">*</span>
+        </th>
+        <td>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-indian-rupee-sign"></i>
+            </span>
+            <input type="text"
+                   class="form-control"
+                   name="salary"
+                   [(ngModel)]="form.data.salary"
+                   placeholder="Enter Salary">
+          </div>
+          <small class="text-danger">{{form.inputerror.salary}}</small>
+        </td>
+      </tr>
 
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-            </td>
-        </tr>
+      <!-- Button -->
+      <tr>
+        <th></th>
+        <td>
+          <button class="btn btn-primary btn-sm px-4" (click)="submit()">
+            <i class="fa fa-floppy-disk"></i> Save
+          </button>
+        </td>
+      </tr>
+
     </table>
+
+  </div>
+
 </div>
 
 <app-footer></app-footer>

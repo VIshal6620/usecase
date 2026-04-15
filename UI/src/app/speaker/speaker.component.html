@@ -1,43 +1,91 @@
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Speaker</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Speaker</h1>
+<div align="center" style="padding-top: 20px;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    <!-- Heading -->
+    <h2 style="margin-bottom: 10px; color: navy;">
+        <i class="fa-solid fa-microphone"></i>
+        <span *ngIf="!form.data.id">Add Speaker</span>
+        <span *ngIf="form.data.id>0">Update Speaker</span>
+    </h2>
+
+    <!-- Message -->
+    <div style="height: 20px; margin-bottom: 10px;">
+        <h6 class="text-success" *ngIf="!form.error && form.message">{{ form.message }}</h6>
+        <h6 class="text-danger" *ngIf="form.error && form.message">{{ form.message }}</h6>
     </div>
 
-    <table>
-        <tr>
-            <th align="left">SpeakerName<span style="color: red">*</span></th>
-            <td><input type="text" name="speakerName" [(ngModel)]="form.data.speakerName" placeholder="Enter speakerName"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.speakerName}}</td>
-        </tr>
+    <!-- Card -->
+    <div class="card shadow p-3"
+         style="width: 100%; max-width: 500px; border-radius: 10px;">
 
-        <tr>
-            <th align="left">Topic<span style="color: red">*</span></th>
-            <td><input type="text" name="topic" [(ngModel)]="form.data.topic" placeholder="Enter topic"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.topic}}</td>
-        </tr>
+        <table class="table table-borderless">
 
-        <tr>
-            <th align="left">organization<span style="color: red">*</span></th>
-            <td><input type="text" name="organization" [(ngModel)]="form.data.organization" placeholder="Enter organization" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.organization}}</td>
-        </tr>
+            <!-- Speaker Name -->
+            <tr>
+                <th align="left">
+                    <i class="fa-solid fa-user"></i> SpeakerName <span class="text-danger">*</span>
+                </th>
+                <td>
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           name="speakerName"
+                           [(ngModel)]="form.data.speakerName"
+                           placeholder="Enter speakerName">
+                </td>
+                <td class="text-danger small">
+                    {{form.inputerror.speakerName}}
+                </td>
+            </tr>
 
-        <tr></tr>
+            <!-- Topic -->
+            <tr>
+                <th align="left">
+                    <i class="fa-solid fa-book-open"></i> Topic <span class="text-danger">*</span>
+                </th>
+                <td>
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           name="topic"
+                           [(ngModel)]="form.data.topic"
+                           placeholder="Enter topic">
+                </td>
+                <td class="text-danger small">
+                    {{form.inputerror.topic}}
+                </td>
+            </tr>
 
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-                
-            </td>
-        </tr>
-    </table>
+            <!-- Organization -->
+            <tr>
+                <th align="left">
+                    <i class="fa-solid fa-building"></i> Organization <span class="text-danger">*</span>
+                </th>
+                <td>
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           name="organization"
+                           [(ngModel)]="form.data.organization"
+                           placeholder="Enter organization">
+                </td>
+                <td class="text-danger small">
+                    {{form.inputerror.organization}}
+                </td>
+            </tr>
+
+            <!-- Button -->
+            <tr>
+                <th></th>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-sm w-100"
+                            (click)="submit()">
+                        <i class="fa-solid fa-floppy-disk"></i> Save
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
 </div>
 
 <app-footer></app-footer>

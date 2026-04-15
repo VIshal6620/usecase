@@ -1,42 +1,107 @@
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Loan</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Loan</h1>
+<div align="center"
+     style="min-height: 90vh;
+            padding: 40px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    <h1 *ngIf="!form.data.id" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-money-bill-wave"></i> Add Loan
+    </h1>
+
+    <h1 *ngIf="form.data.id>0" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-pen-to-square"></i> Update Loan
+    </h1>
+
+    <!-- Message -->
+    <div style="height: 25px; margin-bottom: 15px;">
+        <h3 class="text-success m-0" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h3>
+        <h3 class="text-danger m-0" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h3>
     </div>
 
-    <table>
-        <tr>
-            <th align="left">LoanAmount<span style="color: red">*</span></th>
-            <td><input type="text" name="loanAmount" [(ngModel)]="form.data.loanAmount" placeholder="Enter LoanAmount"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.loanAmount}}</td>
-        </tr>
+    <!-- Table Form -->
+    <table class="table table-bordered shadow"
+           style="background: white; border-radius: 10px; width: 420px; overflow: hidden;">
 
+        <!-- Loan Amount -->
         <tr>
-            <th align="left">InterestRate<span style="color: red">*</span></th>
-            <td><input type="text" name="interestRate" [(ngModel)]="form.data.interestRate" placeholder="Enter interestRate"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.interestRate}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">IssueDate<span style="color: red">*</span></th>
-            <td><input type="date" name="issueDate" [(ngModel)]="form.data.issueDate" placeholder="Enter issueDate" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.issueDate}}</td>
-        </tr>
-
-        <tr></tr>
-
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-                
+            <th class="text-start p-2">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                LoanAmount <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="loanAmount"
+                       [(ngModel)]="form.data.loanAmount"
+                       placeholder="Enter Loan Amount">
             </td>
         </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.loanAmount}}
+            </td>
+        </tr>
+
+        <!-- Interest Rate -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-percent"></i>
+                InterestRate <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="interestRate"
+                       [(ngModel)]="form.data.interestRate"
+                       placeholder="Enter Interest Rate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.interestRate}}
+            </td>
+        </tr>
+
+        <!-- Issue Date -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-calendar-days"></i>
+                IssueDate <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="date"
+                       class="form-control form-control-sm"
+                       name="issueDate"
+                       [(ngModel)]="form.data.issueDate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.issueDate}}
+            </td>
+        </tr>
+
+        <!-- Button -->
+        <tr>
+            <td></td>
+            <td class="p-3">
+                <button class="btn btn-primary btn-sm px-4"
+                        (click)="submit()">
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+            </td>
+        </tr>
+
     </table>
 </div>
 

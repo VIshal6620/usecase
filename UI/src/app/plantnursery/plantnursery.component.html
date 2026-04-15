@@ -1,43 +1,100 @@
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add PlantNursery</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update PlantNursery</h1>
+<!-- Background -->
+<div class="container-fluid d-flex justify-content-center align-items-center"
+     style="min-height: 90vh;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+  <!-- Card -->
+  <div class="card shadow-lg p-4" style="width: 420px; border-radius: 15px;">
+
+    <!-- Heading -->
+    <h2 class="text-center text-primary fw-bold mb-3">
+      <i class="fa-solid fa-seedling"></i>
+      {{ form.data.id > 0 ? 'Update Plant Nursery' : 'Add Plant Nursery' }}
+    </h2>
+
+    <!-- Message -->
+    <div class="text-center mb-2">
+      <div *ngIf="!form.error && form.message" class="alert alert-success py-1">
+        {{ form.message }}
+      </div>
+      <div *ngIf="form.error && form.message" class="alert alert-danger py-1">
+        {{ form.message }}
+      </div>
     </div>
 
-    <table>
-        <tr>
-            <th align="left">PlantName<span style="color: red">*</span></th>
-            <td><input type="text" name="plantName" [(ngModel)]="form.data.plantName" placeholder="Enter plantName"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.plantName}}</td>
-        </tr>
+    <!-- Form -->
+    <form>
 
-        <tr>
-            <th align="left">Category<span style="color: red">*</span></th>
-            <td><input type="text" name="category" [(ngModel)]="form.data.category" placeholder="Enter category"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.category}}</td>
-        </tr>
+      <!-- Plant Name -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">
+          Plant Name <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-leaf"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 name="plantName"
+                 [(ngModel)]="form.data.plantName"
+                 placeholder="Enter Plant Name">
+        </div>
+        <small class="text-danger">{{ form.inputerror.plantName }}</small>
+      </div>
 
-        <tr>
-            <th align="left">quantity<span style="color: red">*</span></th>
-            <td><input type="text" name="quantity" [(ngModel)]="form.data.quantity" placeholder="Enter quantity" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.quantity}}</td>
-        </tr>
+      <!-- Category -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">
+          Category <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-layer-group"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 name="category"
+                 [(ngModel)]="form.data.category"
+                 placeholder="Enter Category">
+        </div>
+        <small class="text-danger">{{ form.inputerror.category }}</small>
+      </div>
 
+      <!-- Quantity -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">
+          Quantity <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-boxes-stacked"></i>
+          </span>
+          <input type="number"
+                 class="form-control"
+                 name="quantity"
+                 [(ngModel)]="form.data.quantity"
+                 placeholder="Enter Quantity">
+        </div>
+        <small class="text-danger">{{ form.inputerror.quantity }}</small>
+      </div>
 
-        <tr></tr>
+      <!-- Button -->
+      <div class="text-center">
+        <button type="button"
+                class="btn btn-primary btn-sm px-4"
+                (click)="submit()">
+          <i class="fa-solid fa-floppy-disk"></i> Save
+        </button>
+      </div>
 
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-            </td>
-        </tr>
-    </table>
+    </form>
+
+  </div>
 </div>
 
 <app-footer></app-footer>

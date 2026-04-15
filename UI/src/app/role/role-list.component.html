@@ -1,64 +1,145 @@
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 align="center" style="margin-bottom: 5px; color: navy;">Role List</h1>
+<!-- Background Section -->
+<div class="container-fluid py-5"
+     style="min-height: 90vh;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+  <div class="container">
+
+    <!-- Heading -->
+    <h2 class="text-center text-primary fw-bold mb-3">
+      <i class="fa-solid fa-users"></i> Role List
+    </h2>
+
+    <!-- Message -->
+    <div class="text-center mb-3">
+      <div *ngIf="!form.error && form.message" class="alert alert-success p-2">
+        {{ form.message }}
+      </div>
+      <div *ngIf="form.error && form.message" class="alert alert-danger p-2">
+        {{ form.message }}
+      </div>
     </div>
 
-    <div *ngIf="form.list.length > 0">
-        <table style="width: 100%">
-            <tr>
-                <td align="center">
-                    <label><b>Role: </b></label>
-                    <select name="id" [(ngModel)]="form.id" style="width: 165px;">
-                        <option value="undefined">------------Select------------</option>
-                        <option *ngFor="let obj of form.preload.roleList" [value]="obj.id">{{obj.name}}</option>
-                    </select>&nbsp;
+    <!-- Search Card -->
+    <div class="card shadow-sm p-3 mb-4">
+      <div class="row align-items-center">
 
-                    <button (click)="search()">search</button>&nbsp;
-                    <button (click)="reset()">reset</button>
-                </td>
-            </tr>
-        </table>
+        <div class="col-md-4">
+          <label class="fw-semibold">Role</label>
+          <select class="form-select" name="id" [(ngModel)]="form.id">
+            <option value="undefined">------------Select------------</option>
+            <option *ngFor="let obj of form.preload.roleList" [value]="obj.id">
+              {{ obj.name }}
+            </option>
+          </select>
+        </div>
 
-        <br>
+        <div class="col-md-8 text-end mt-3 mt-md-0">
+          <button class="btn btn-primary me-2" (click)="search()">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
 
-        <table border="1" style="width: 100%; border: groove;">
-            <tr style="background-color: #e1e6f1e3;">
-                <th><input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)" /></th>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Edit</th>
-            </tr>
+          <button class="btn btn-secondary" (click)="reset()">
+            <i class="fa-solid fa-rotate"></i> Reset
+          </button>
+        </div>
 
-            <tr align="center" *ngFor="let m of form.list; let i = index">
-                <td><input type="checkbox" #checkboxes (change)="checklistUpdate()" [id]="m.id" [value]="isMasterSel"></td>
-                <td>{{(form.pageNo*5)+i+ 1}}</td>
-                <td>{{m.name}}</td>
-                <td>{{m.description}}</td>
-                <td><a (click)="forward( '/role/' +  m.id)" style="cursor: pointer;">Edit</a></td>
-            </tr>
-        </table>
-
-        <br>
-
-        <table style="width: 100%">
-            <tr>
-                <td style="width: 25%"><button (click)="previous()" [disabled]="form.pageNo == 0">previous</button></td>
-                <td align="center" style="width: 25%"><button (click)="forward('/role')">new</button></td>
-                <td align="center" style="width: 25%"><button (click)="delete()">delete</button></td>
-                <td style="width: 25%" align="right"><button [disabled]="form.list.length < 5" (click)="next()">next</button>
-            </tr>
-        </table>
+      </div>
     </div>
 
-    <br>
+    <!-- Table -->
+    <div *ngIf="form.list.length > 0" class="card shadow-lg p-3">
 
-    <div *ngIf="form.list.length == 0"><button (click)="reset()">Back</button></div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center align-middle">
+
+          <thead class="table-primary">
+            <tr>
+              <th>
+                <input type="checkbox"
+                       [(ngModel)]="isMasterSel"
+                       (change)="checkUncheckAll($event)" />
+              </th>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let m of form.list; let i = index">
+              <td>
+                <input type="checkbox"
+                       (change)="checklistUpdate()"
+                       [id]="m.id" />
+              </td>
+
+              <td>{{ (form.pageNo * 5) + i + 1 }}</td>
+              <td>{{ m.name }}</td>
+              <td>{{ m.description }}</td>
+
+              <td>
+                <button class="btn btn-sm btn-warning"
+                        (click)="forward('/role/' + m.id)">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+      <!-- Pagination + Actions -->
+      <div class="row mt-3">
+
+        <div class="col-md-3">
+          <button class="btn btn-outline-primary w-100"
+                  (click)="previous()"
+                  [disabled]="form.pageNo == 0">
+            <i class="fa-solid fa-arrow-left"></i> Previous
+          </button>
+        </div>
+
+        <div class="col-md-3">
+          <button class="btn btn-success w-100"
+                  (click)="forward('/role')">
+            <i class="fa-solid fa-plus"></i> New
+          </button>
+        </div>
+
+        <div class="col-md-3">
+          <button class="btn btn-danger w-100"
+                  (click)="delete()">
+            <i class="fa-solid fa-trash"></i> Delete
+          </button>
+        </div>
+
+        <div class="col-md-3 text-end">
+          <button class="btn btn-outline-primary w-100"
+                  (click)="next()"
+                  [disabled]="form.list.length < 5">
+            Next <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- No Data -->
+    <div *ngIf="form.list.length == 0" class="text-center">
+      <button class="btn btn-secondary" (click)="reset()">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </button>
+    </div>
+
+  </div>
 </div>
 
 <app-footer></app-footer>

@@ -1,47 +1,129 @@
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Holiday</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Holiday</h1>
+<div align="center"
+     style="min-height: 90vh;
+            padding: 40px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    <!-- Heading -->
+    <h1 *ngIf="!form.data.id" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-calendar-plus"></i> Add Holiday
+    </h1>
+
+    <h1 *ngIf="form.data.id>0" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-pen-to-square"></i> Update Holiday
+    </h1>
+
+    <!-- Message -->
+    <div style="height: 25px; margin-bottom: 15px;">
+        <h3 class="text-success m-0" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h3>
+        <h3 class="text-danger m-0" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h3>
     </div>
 
-    <table>
-        <tr>
-            <th align="left">HolidayCode<span style="color: red">*</span></th>
-            <td><input type="text" name="holidayCode" [(ngModel)]="form.data.holidayCode" placeholder="Enter holidayCode"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.holidayCode}}</td>
-        </tr>
+    <!-- Table Form -->
+    <table class="table table-bordered shadow"
+           style="background:white; border-radius:10px; width:420px; overflow:hidden;">
 
+        <!-- Holiday Code -->
         <tr>
-            <th align="left">HolidayName<span style="color: red">*</span></th>
-            <td><input type="text" name="holidayName" [(ngModel)]="form.data.holidayName" placeholder="Enter holidayName"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.holidayName}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">HolidayDate<span style="color: red">*</span></th>
-            <td><input type="date" name="holidayDate" [(ngModel)]="form.data.holidayDate" placeholder="Enter holidayDate" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.holidayDate}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">HolidayType<span style="color: red">*</span></th>
-            <td><input type="text" name="holidayType" [(ngModel)]="form.data.holidayType" placeholder="Enter holidayType" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.holidayType}}</td>
-        </tr>
-
-        <tr></tr>
-
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
+            <th class="text-start p-2">
+                <i class="fa-solid fa-code"></i>
+                HolidayCode <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="holidayCode"
+                       [(ngModel)]="form.data.holidayCode"
+                       placeholder="Enter Holiday Code">
             </td>
         </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.holidayCode}}
+            </td>
+        </tr>
+
+        <!-- Holiday Name -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-gift"></i>
+                HolidayName <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="holidayName"
+                       [(ngModel)]="form.data.holidayName"
+                       placeholder="Enter Holiday Name">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.holidayName}}
+            </td>
+        </tr>
+
+        <!-- Holiday Date -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-calendar-days"></i>
+                HolidayDate <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="date"
+                       class="form-control form-control-sm"
+                       name="holidayDate"
+                       [(ngModel)]="form.data.holidayDate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.holidayDate}}
+            </td>
+        </tr>
+
+        <!-- Holiday Type -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-tag"></i>
+                HolidayType <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="holidayType"
+                       [(ngModel)]="form.data.holidayType"
+                       placeholder="Enter Holiday Type">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.holidayType}}
+            </td>
+        </tr>
+
+        <!-- Button -->
+        <tr>
+            <td></td>
+            <td class="p-3">
+                <button class="btn btn-primary btn-sm px-4"
+                        (click)="submit()">
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+            </td>
+        </tr>
+
     </table>
 </div>
 

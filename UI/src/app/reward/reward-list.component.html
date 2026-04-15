@@ -1,66 +1,160 @@
-
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 align="center" style="margin-bottom: 5px; color: navy;">Reward List</h1>
+<div class="container-fluid py-4"
+     style="min-height: 90vh;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+  <!-- Heading -->
+  <h2 class="text-center fw-bold text-primary mb-4">
+    <i class="fa-solid fa-gift"></i> Reward List
+  </h2>
+
+  <!-- Message -->
+  <div class="text-center mb-3">
+    <div *ngIf="!form.error && form.message" class="alert alert-success py-1">
+      {{ form.message }}
+    </div>
+    <div *ngIf="form.error && form.message" class="alert alert-danger py-1">
+      {{ form.message }}
+    </div>
+  </div>
+
+  <!-- Search Section -->
+  <div class="card shadow-sm p-3 mb-4">
+    <div class="row align-items-end">
+
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Reward Code</label>
+        <input type="text"
+               class="form-control form-control-sm"
+               [(ngModel)]="form.rewardCode"
+               placeholder="Enter Reward Code">
+      </div>
+
+      <div class="col-md-8 text-end mt-2">
+        <button class="btn btn-primary btn-sm me-2" (click)="search()">
+          <i class="fa fa-search"></i> Search
+        </button>
+
+        <button class="btn btn-secondary btn-sm" (click)="reset()">
+          <i class="fa fa-rotate"></i> Reset
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div *ngIf="form.list.length > 0" class="card shadow">
+
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered align-middle text-center mb-0 w-100">
+
+        <thead class="table-dark">
+          <tr>
+            <th style="width: 40px;">
+              <input type="checkbox"
+                     [(ngModel)]="isMasterSel"
+                     (change)="checkUncheckAll($event)">
+            </th>
+            <th style="width: 60px;">#</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th style="width: 80px;">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let m of form.list; let i = index">
+
+            <td>
+              <input type="checkbox"
+                     (change)="checklistUpdate()"
+                     [id]="m.id">
+            </td>
+
+            <td>{{ (form.pageNo * 5) + i + 1 }}</td>
+
+            <td class="fw-semibold text-primary">
+              {{ m.rewardCode }}
+            </td>
+
+            <td>{{ m.rewardName }}</td>
+
+            <td class="fw-bold text-success">
+              ₹ {{ m.rewardAmount }}
+            </td>
+
+            <td>
+              <span class="badge px-2 py-1"
+                    [ngClass]="m.rewardStatus === 'Active' ? 'bg-success' : 'bg-danger'">
+                {{ m.rewardStatus }}
+              </span>
+            </td>
+
+            <td>
+              <button class="btn btn-warning btn-sm"
+                      (click)="forward('/reward/' + m.id)">
+                <i class="fa fa-edit"></i>
+              </button>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
     </div>
 
-    <div *ngIf="form.list.length > 0">
-        <table style="width: 100%">
-            <tr>
-                <td align="center">
-                    <label><b>rewardCode: </b></label>
-                    <input type="text" name="rewardCode" [(ngModel)]="form.rewardCode" placeholder="Enter rewardCode">&nbsp;
+    <!-- Footer -->
+    <div class="p-3 border-top">
+      <div class="row text-center g-2">
 
-                    <button (click)="search()">search</button>&nbsp;
-                    <button (click)="reset()">reset</button>
-                </td>
-            </tr>
-        </table>
+        <div class="col-md-3">
+          <button class="btn btn-outline-primary btn-sm w-40"
+                  (click)="previous()"
+                  [disabled]="form.pageNo == 0">
+            <i class="fa fa-arrow-left"></i> Previous
+          </button>
+        </div>
 
-        <br>
+        <div class="col-md-3">
+          <button class="btn btn-success btn-sm w-40"
+                  (click)="forward('/reward')">
+            <i class="fa fa-plus"></i> New
+          </button>
+        </div>
 
-        <table border="1" style="width: 100%; border: groove;">
-            <tr style="background-color: #e1e6f1e3;">
-                <th><input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)" /></th>
-                <th>S.No</th>
-                <th>RewardCode</th>
-                <th>RewardName</th>
-                <th>RewardAmount</th>
-                <th>RewardStatus</th>
-                <th>Edit</th>
-            </tr>
+        <div class="col-md-3">
+          <button class="btn btn-danger btn-sm w-50"
+                  (click)="delete()">
+            <i class="fa fa-trash"></i> Delete
+          </button>
+        </div>
 
-            <tr align="center" *ngFor="let m of form.list; let i = index">
-                <td><input type="checkbox" #checkboxes (change)="checklistUpdate()" [id]="m.id" [value]="isMasterSel"></td>
-                <td>{{(form.pageNo*5)+i+ 1}}</td>
-                <td>{{m.rewardCode}}</td>
-                <td>{{m.rewardName}}</td>
-                <td>{{m.rewardAmount}}</td>
-                <td>{{m.rewardStatus}}</td>
-                <td><a (click)="forward('/reward/' + m.id)" style="cursor: pointer;">Edit</a></td>
-            </tr>
-        </table>
+        <div class="col-md-3">
+          <button class="btn btn-outline-primary btn-sm w-50"
+                  (click)="next()"
+                  [disabled]="form.list.length < 5">
+            Next <i class="fa fa-arrow-right"></i>
+          </button>
+        </div>
 
-        <br>
-
-        <table style="width: 100%">
-            <tr>
-                <td style="width: 25%"><button (click)="previous()" [disabled]="form.pageNo == 0">previous</button></td>
-                <td align="center" style="width: 25%"><button (click)="forward('/reward')">new</button></td>
-                <td align="center" style="width: 25%"><button (click)="delete()">delete</button></td>
-                <td style="width: 25%" align="right"><button [disabled]="form.list.length < 5" (click)="next()">next</button>
-            </tr>
-        </table>
+      </div>
     </div>
 
-    <br>
+  </div>
 
-    <div *ngIf="form.list.length == 0"><button (click)="reset()">Back</button></div>
+  <!-- No Data -->
+  <div *ngIf="form.list.length == 0" class="text-center">
+    <button class="btn btn-secondary btn-sm" (click)="reset()">
+      <i class="fa fa-arrow-left"></i> Back
+    </button>
+  </div>
+
 </div>
 
 <app-footer></app-footer>
