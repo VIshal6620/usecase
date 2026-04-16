@@ -22,4 +22,5 @@ export class EndpointServiceService {
   public BLOODDONATION = this.SERVER_URL + "/BloodDonation"
   public SECURITY = this.SERVER_URL + "/Security"
   public NOTIFICATIONTEMPLATE =  this.SERVER_URL + "/NotificationTemplate"
+  public LIMIT = this.SERVER_URL + "/Limit"
 }

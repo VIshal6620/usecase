@@ -278,3 +278,24 @@ class NotificationTemplate(models.Model):
         return data
 
     class Meta: db_table = 'sos_notification_template'
+
+
+class Limit(models.Model):
+    limitCode = models.CharField(max_length=50)
+    limitName = models.CharField(max_length=30)
+    maxValue = models.CharField(max_length=30)
+    status = models.CharField(max_length=50)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'limitCode': self.limitCode,
+            'limitName': self.limitName,
+            'maxValue': self.maxValue,
+            'status': self.status
+        }
+
+        return data
+
+    class Meta:
+        db_table = 'sos_limit'

@@ -19,6 +19,7 @@ from .ctl.RejectionCtl import RejectionCtl
 from .ctl.BloodDonationCtl import BloodDonationCtl
 from .ctl.SecurityCtl import SecurityCtl
 from .ctl.NotificationTemplateCtl import NotificationTemplateCtl
+from .ctl.LimitCtl import LimitCtl
 
 
 @csrf_exempt

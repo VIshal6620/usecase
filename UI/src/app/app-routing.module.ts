@@ -33,6 +33,8 @@ import { SecurityComponent } from "./security/security.component";
 import { SecurityListComponent } from "./security/security-list.component";
 import { NotificationTemplateComponent } from "./notification-template/notification-template.component";
 import { NotificationTemplateListComponent } from "./notification-template/notification-template-list.component";
+import { LimitComponent } from "./limit/limit.component";
+import { LimitListComponent } from "./limit/limit-list.component";
 
 
 
@@ -216,6 +218,16 @@ const routes: Routes = [
   { 
   path: 'NotificationTemplate/:id',
    component: NotificationTemplateComponent 
+  },
+  { path: 'limit', 
+    component: LimitComponent },
+  {
+     path: 'limitlist',
+   component: LimitListComponent
+   },
+  { 
+  path: 'limit/:id',
+   component: LimitComponent 
   },
   {
     path: 'changepassword',

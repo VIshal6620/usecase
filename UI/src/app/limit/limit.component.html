@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex justify-content-center align-items-center"
+     style="min-height: 90vh;
+            padding: 40px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
+
+    <div class="card shadow-lg p-4" style="width: 420px; border-radius: 15px;">
+
+        <!-- Heading -->
+        <h3 *ngIf="!form.data.id" class="text-center text-primary mb-3">
+            <i class="fa-solid fa-money-bill-wave"></i> Add Limit
+        </h3>
+
+        <h3 *ngIf="form.data.id>0" class="text-center text-warning mb-3">
+            <i class="fa-solid fa-pen-to-square"></i> Update Limit
+        </h3>
+
+        <!-- Message -->
+        <div style="height: 25px;">
+            <p class="text-success m-0 text-center" *ngIf="!form.error && form.message">
+                {{ form.message }}
+            </p>
+            <p class="text-danger m-0 text-center" *ngIf="form.error && form.message">
+                {{ form.message }}
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form>
+
+            <!-- Limit Code -->
+            <div class="mb-2">
+                <label class="form-label">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> Limit Code
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="limitCode"
+                       [(ngModel)]="form.data.limitCode"
+                       placeholder="Enter Limit Code">
+                <div class="text-danger small">
+                    {{form.inputerror.limitCode}}
+                </div>
+            </div>
+
+            <!-- Limit Name -->
+            <div class="mb-2">
+                <label class="form-label">
+                    <i class="fa-solid fa-percent"></i> Limit Name
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="limitName"
+                       [(ngModel)]="form.data.limitName"
+                       placeholder="Enter Limit Name">
+                <div class="text-danger small">
+                    {{form.inputerror.limitName}}
+                </div>
+            </div>
+
+            <!-- Max Value -->
+            <div class="mb-2">
+                <label class="form-label">
+                    <i class="fa-solid fa-calendar-days"></i> Max Value
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="maxValue"
+                       [(ngModel)]="form.data.maxValue">
+                <div class="text-danger small">
+                    {{form.inputerror.maxValue}}
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-3">
+                <label class="form-label">
+                    <i class="fa-solid fa-toggle-on"></i> Status
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="status"
+                       [(ngModel)]="form.data.status">
+                <div class="text-danger small">
+                    {{form.inputerror.status}}
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="text-center">
+                <button class="btn btn-primary btn-sm px-4" (click)="submit()">
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<app-footer></app-footer>
