@@ -20,6 +20,7 @@ from .ctl.BloodDonationCtl import BloodDonationCtl
 from .ctl.SecurityCtl import SecurityCtl
 from .ctl.NotificationTemplateCtl import NotificationTemplateCtl
 from .ctl.LimitCtl import LimitCtl
+from .ctl.PurgeCtl import PurgeCtl
 
 
 @csrf_exempt

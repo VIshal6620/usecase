@@ -35,6 +35,8 @@ import { NotificationTemplateComponent } from "./notification-template/notificat
 import { NotificationTemplateListComponent } from "./notification-template/notification-template-list.component";
 import { LimitComponent } from "./limit/limit.component";
 import { LimitListComponent } from "./limit/limit-list.component";
+import { PurgeListComponent } from "./purge/purge-list.component";
+import { PurgeComponent } from "./purge/purge.component";
 
 
 
@@ -228,6 +230,16 @@ const routes: Routes = [
   { 
   path: 'limit/:id',
    component: LimitComponent 
+  },
+  { path: 'purge', 
+    component: PurgeComponent },
+  {
+     path: 'purgelist',
+   component: PurgeListComponent
+   },
+  { 
+  path: 'purge/:id',
+   component: PurgeComponent 
   },
   {
     path: 'changepassword',

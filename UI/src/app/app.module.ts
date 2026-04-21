@@ -47,6 +47,8 @@ import { NotificationTemplateComponent } from './notification-template/notificat
 import { NotificationTemplateListComponent } from './notification-template/notification-template-list.component';
 import { LimitComponent } from './limit/limit.component';
 import { LimitListComponent } from './limit/limit-list.component';
+import { PurgeComponent } from './purge/purge.component';
+import { PurgeListComponent } from './purge/purge-list.component';
 
 
 @NgModule({
@@ -89,6 +91,8 @@ import { LimitListComponent } from './limit/limit-list.component';
     NotificationTemplateListComponent,
     LimitComponent,
     LimitListComponent,
+    PurgeComponent,
+    PurgeListComponent,
  ],
   imports: [
     BrowserModule,

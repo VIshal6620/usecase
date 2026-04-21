@@ -9,7 +9,7 @@
 
     <!-- Heading -->
     <h1 style="margin-bottom: 10px; color: navy;">
-        <i class="fa-solid fa-money-bill-wave"></i> Limit List
+        <i class="fa-solid fa-calendar-days"></i> Purge List
     </h1>
 
     <!-- Message -->
@@ -28,13 +28,14 @@
         <table class="table table-borderless w-50 mx-auto">
             <tr>
                 <td align="center">
-                    <label><b>Limit Code: </b></label>
+
+                    <label><b>Purge Code: </b></label>
 
                     <input type="text"
                            class="form-control form-control-sm d-inline w-50"
-                           name="limitCode"
-                           [(ngModel)]="form.limitCode"
-                           placeholder="Enter Limit Code">
+                           name="purgeCode"
+                           [(ngModel)]="form.purgeCode"
+                           placeholder="Enter Purge Code">
 
                     <button class="btn btn-primary btn-sm ms-2"
                             (click)="search()">
@@ -45,6 +46,7 @@
                             (click)="reset()">
                         <i class="fa fa-rotate"></i>
                     </button>
+
                 </td>
             </tr>
         </table>
@@ -60,14 +62,14 @@
                            (change)="checkUncheckAll($event)">
                 </th>
                 <th>S.No</th>
-                <th>Limit Code</th>
-                <th>Limit Name</th>
-                <th>Max Value</th>
+                <th>Purge Code</th>
+                <th>Data Type</th>
+                <th>LastRunDate</th>
                 <th>Status</th>
                 <th>Edit</th>
             </tr>
 
-            <tr align="center" *ngFor="let m of form.list; let i = index">
+            <tr *ngFor="let m of form.list; let i = index">
 
                 <td>
             <input type="checkbox"
@@ -79,25 +81,26 @@
 
                 <td>{{(form.pageNo*5)+i+1}}</td>
 
-                <td class="fw-bold text-success">
-                    ₹ {{m.limitCode}}
+                <td class="fw-bold text-primary">
+                    {{m.purgeCode}}
+                </td>
+
+                <td>{{m.dataType}}</td>
+
+                <td>
+                    <i class="fa fa-calendar"></i>
+                    {{m.lastRunDate}}
                 </td>
 
                 <td>
-                    {{m.limitName}} %
-                </td>
-
-                <td>
-                    {{m.maxValue}}
-                </td>
-
-                <td>
-                    {{m.status}}
+                    <span class="badge bg-info text-dark">
+                        {{m.status}}
+                    </span>
                 </td>
 
                 <td>
                     <button class="btn btn-warning btn-sm"
-                            (click)="forward('/limit/' + m.id)">
+                            (click)="forward('/purge/' + m.id)">
                         <i class="fa fa-edit"></i>
                     </button>
                 </td>
@@ -119,7 +122,7 @@
 
                 <td align="center" style="width:25%">
                     <button class="btn btn-success btn-sm w-30"
-                            (click)="forward('/limit')">
+                            (click)="forward('/purge')">
                         <i class="fa fa-plus"></i> New
                     </button>
                 </td>

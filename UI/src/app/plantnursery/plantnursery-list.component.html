@@ -71,11 +71,12 @@
           <tr *ngFor="let m of form.list; let i = index">
 
                     <td>
-                        <input type="checkbox"
-                               #checkboxes
-                               (change)="checklistUpdate()"
-                               [id]="m.id">
-                    </td>
+            <input type="checkbox"
+                   #checkboxes
+                   (change)="checklistUpdate()"
+                   [id]="m.id"
+                   [value]="isMasterSel">
+          </td>
 
                     <td>{{(form.pageNo*5)+i+1}}</td>
             <td class="fw-semibold text-success">

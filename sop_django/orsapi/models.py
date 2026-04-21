@@ -299,3 +299,24 @@ class Limit(models.Model):
 
     class Meta:
         db_table = 'sos_limit'
+
+
+class Purge(models.Model):
+    purgeCode = models.CharField(max_length=30)
+    dataType = models.CharField(max_length=30)
+    lastRunDate = models.DateField(max_length=20)
+    status = models.CharField(max_length=60)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'purgeCode': self.purgeCode,
+            'dataType': self.dataType,
+            'lastRunDate': self.lastRunDate,
+            'status': self.status
+        }
+
+        return data
+
+    class Meta:
+        db_table = 'sos_purge'
