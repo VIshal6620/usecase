@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+
+<br><br><br>
+
+<div align="center"
+     style="min-height: 90vh;
+            padding: 30px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
+
+    <!-- Heading -->
+    <h1 *ngIf="!form.data.id" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-hand-holding-hand"></i> Add DonationCamp
+    </h1>
+
+    <h1 *ngIf="form.data.id>0" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-hand-holding-hand"></i> Update DonationCamp
+    </h1>
+
+    <!-- Message -->
+    <div style="height: 25px; margin-bottom: 15px;">
+        <h3 class="text-success m-0" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h3>
+        <h3 class="text-danger m-0" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h3>
+    </div>
+
+    <!-- Form Table -->
+    <table class="table table-bordered shadow"
+           style="background:white; border-radius:10px; width:420px; overflow:hidden;">
+
+        <!-- Camp Name -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-user"></i>
+                Camp Name <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="campName"
+                       [(ngModel)]="form.data.campName"
+                       placeholder="Enter Camp Name">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">{{form.inputerror.campName}}</td>
+        </tr>
+
+
+
+        <!-- camp Date -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-calendar"></i>
+                Camp Date<span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="date"
+                       class="form-control form-control-sm"
+                       name="campDate"
+                       [(ngModel)]="form.data.campDate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">{{form.inputerror.campDate}}</td>
+        </tr>
+
+        <!-- organizer -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-phone"></i>
+                organizer <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="organizer"
+                       [(ngModel)]="form.data.organizer"
+                       placeholder="Enter Organizer">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">{{form.inputerror.contactNumber}}</td>
+        </tr>
+
+        <!-- Button -->
+        <tr>
+            <td></td>
+            <td class="p-3">
+                <button class="btn btn-danger btn-sm px-4"
+                        (click)="submit()">
+                    <i class="fa-solid fa-heart"></i> Save
+                </button>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<app-footer></app-footer>

@@ -24,4 +24,5 @@ export class EndpointServiceService {
   public NOTIFICATIONTEMPLATE =  this.SERVER_URL + "/NotificationTemplate"
   public LIMIT = this.SERVER_URL + "/Limit"
   public PURGE = this.SERVER_URL + "/Purge"
+  public DONATIONCAMP = this.SERVER_URL + "/DonationCamp"
 }

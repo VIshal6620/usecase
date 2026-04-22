@@ -49,6 +49,8 @@ import { LimitComponent } from './limit/limit.component';
 import { LimitListComponent } from './limit/limit-list.component';
 import { PurgeComponent } from './purge/purge.component';
 import { PurgeListComponent } from './purge/purge-list.component';
+import { DonationCampComponent } from './donationcamp/donationcamp.component';
+import { DonationCampListComponent } from './donationcamp/donationcamp-list.component';
 
 
 @NgModule({
@@ -93,6 +95,8 @@ import { PurgeListComponent } from './purge/purge-list.component';
     LimitListComponent,
     PurgeComponent,
     PurgeListComponent,
+    DonationCampComponent,
+    DonationCampListComponent,
  ],
   imports: [
     BrowserModule,

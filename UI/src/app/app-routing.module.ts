@@ -37,6 +37,8 @@ import { LimitComponent } from "./limit/limit.component";
 import { LimitListComponent } from "./limit/limit-list.component";
 import { PurgeListComponent } from "./purge/purge-list.component";
 import { PurgeComponent } from "./purge/purge.component";
+import { DonationCampListComponent } from "./donationcamp/donationcamp-list.component";
+import { DonationCampComponent } from "./donationcamp/donationcamp.component";
 
 
 
@@ -240,6 +242,16 @@ const routes: Routes = [
   { 
   path: 'purge/:id',
    component: PurgeComponent 
+  },
+  { path: 'DonationCamp', 
+    component: DonationCampComponent },
+  {
+     path: 'DonationCamplist',
+   component: DonationCampListComponent
+   },
+  { 
+  path: 'DonationCamp/:id',
+   component: DonationCampComponent 
   },
   {
     path: 'changepassword',

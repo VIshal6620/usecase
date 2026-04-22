@@ -320,3 +320,22 @@ class Purge(models.Model):
 
     class Meta:
         db_table = 'sos_purge'
+
+
+class DonationCamp(models.Model):
+    campName = models.CharField(max_length=30)
+    campDate = models.DateField(max_length=20)
+    organizer = models.CharField(max_length=50)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'campName': self.campName,
+            'campDate': self.campDate,
+            'organizer': self.organizer
+        }
+
+        return data
+
+    class Meta:
+        db_table = 'sos_donationcamp'
