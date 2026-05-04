@@ -33,3 +33,4 @@ class GymService(BaseService):
     def get_model(self):
         return Gym
 
+

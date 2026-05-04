@@ -14,3 +14,6 @@ export class GymListComponent extends BaseListCtl{
       }
 
 }
+
+
+

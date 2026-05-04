@@ -339,3 +339,4 @@ class DonationCamp(models.Model):
 
     class Meta:
         db_table = 'sos_donationcamp'
+

@@ -25,4 +25,6 @@ export class EndpointServiceService {
   public LIMIT = this.SERVER_URL + "/Limit"
   public PURGE = this.SERVER_URL + "/Purge"
   public DONATIONCAMP = this.SERVER_URL + "/DonationCamp"
+
+  
 }
