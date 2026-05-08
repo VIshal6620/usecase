@@ -340,3 +340,23 @@ class DonationCamp(models.Model):
     class Meta:
         db_table = 'sos_donationcamp'
 
+
+class Account(models.Model):
+    accountCode = models.CharField(max_length=30)
+    userName = models.CharField(max_length=30)
+    accountType = models.CharField(max_length=30)
+    status = models.CharField(max_length=50)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'accountCode': self.accountCode,
+            'userName': self.userName,
+            'accountType': self.accountType,
+            'status': self.status
+        }
+
+        return data
+
+    class Meta:
+        db_table = 'sos_account'

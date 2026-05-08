@@ -22,6 +22,7 @@ from .ctl.NotificationTemplateCtl import NotificationTemplateCtl
 from .ctl.LimitCtl import LimitCtl
 from .ctl.PurgeCtl import PurgeCtl
 from .ctl.DonationCampCtl import DonationCampCtl
+from .ctl.AccountCtl import AccountCtl
 
 
 @csrf_exempt

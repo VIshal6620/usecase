@@ -39,6 +39,8 @@ import { PurgeListComponent } from "./purge/purge-list.component";
 import { PurgeComponent } from "./purge/purge.component";
 import { DonationCampListComponent } from "./donationcamp/donationcamp-list.component";
 import { DonationCampComponent } from "./donationcamp/donationcamp.component";
+import { AccountComponent } from "./account/account.component";
+import { AccountListComponent } from "./account/account-list.component";
 
 
 
@@ -252,6 +254,16 @@ const routes: Routes = [
   { 
   path: 'DonationCamp/:id',
    component: DonationCampComponent 
+  },
+  { path: 'account', 
+    component: AccountComponent },
+  {
+     path: 'accountlist',
+   component: AccountListComponent
+   },
+  { 
+  path: 'account/:id',
+   component: AccountComponent 
   },
   {
     path: 'changepassword',

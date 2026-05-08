@@ -51,6 +51,8 @@ import { PurgeComponent } from './purge/purge.component';
 import { PurgeListComponent } from './purge/purge-list.component';
 import { DonationCampComponent } from './donationcamp/donationcamp.component';
 import { DonationCampListComponent } from './donationcamp/donationcamp-list.component';
+import { AccountComponent } from './account/account.component';
+import { AccountListComponent } from './account/account-list.component';
 
 
 @NgModule({
@@ -97,6 +99,8 @@ import { DonationCampListComponent } from './donationcamp/donationcamp-list.comp
     PurgeListComponent,
     DonationCampComponent,
     DonationCampListComponent,
+    AccountComponent,
+    AccountListComponent,
  ],
   imports: [
     BrowserModule,

@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+
+<br><br><br>
+
+<div align="center"
+     style="min-height: 90vh;
+            padding: 30px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
+
+    <!-- Heading -->
+    <h1 *ngIf="!form.data.id" style="margin-bottom: 10px; color: navy">
+        <i class="fas fa-address-card"></i>Add Account
+    </h1>
+
+    <h1 *ngIf="form.data.id>0" style="margin-bottom: 10px; color: navy">
+        <i class="fas fa-address-card"></i>Update Account
+    </h1>
+
+    <!-- Message -->
+    <div style="height: 25px; margin-bottom: 15px;">
+        <h3 class="text-success m-0" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h3>
+        <h3 class="text-danger m-0" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h3>
+    </div>
+
+    <!-- Form Table -->
+    <table class="table table-bordered shadow"
+           style="background:white; border-radius:10px; width:420px; overflow:hidden;">
+
+        <!-- AccountCode -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-user"></i>
+                AccountCode <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="accountCode"
+                       [(ngModel)]="form.data.accountCode"
+                       placeholder="Enter AccountCode">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">{{form.inputerror.accountCode}}</td>
+        </tr>
+
+        <!-- UserName  -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-calendar"></i>
+                UserName  <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="userName"
+                       [(ngModel)]="form.data.userName" placeholder="Enter UserName">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">{{form.inputerror.userName}}</td>
+        </tr>
+
+        <!-- AccountType -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-calendar"></i>
+                AccountType <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="accountType"
+                       [(ngModel)]="form.data.accountType">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">{{form.inputerror.accountType}}</td>
+        </tr>
+
+        <!-- status -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-phone"></i>
+                Status <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="status"
+                       [(ngModel)]="form.data.status"
+                       placeholder="Enter status ">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">{{form.inputerror.status}}</td>
+        </tr>
+
+        <!-- Button -->
+        <tr>
+            <td></td>
+            <td class="p-3">
+                <button class="btn btn-danger btn-sm px-4"
+                        (click)="submit()">
+                     Save
+                </button>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<app-footer></app-footer>

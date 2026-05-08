@@ -1,0 +1,163 @@
+<app-navbar></app-navbar>
+
+<div align="center"
+     style="min-height: 90vh;
+            padding: 30px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
+
+    <!-- Heading -->
+    <h1 style="margin-bottom: 10px; color: navy;">
+        <i class="fa-solid fa-droplet"></i> Account List
+    </h1>
+
+    <!-- Message -->
+    <div style="height: 25px; margin-bottom: 15px;">
+        <h3 class="text-success m-0" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h3>
+        <h3 class="text-danger m-0" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h3>
+    </div>
+
+    <div *ngIf="form.list.length > 0">
+
+        <!-- Search -->
+        <table class="table table-borderless w-50 mx-auto">
+            <tr>
+                <td align="center">
+
+                    <label><b>Account Code: </b></label>
+
+                    <input type="text"
+                           class="form-control form-control-sm d-inline w-50"
+                           name="accountCode"
+                           [(ngModel)]="form.accountCode"
+                           placeholder="Enter accountCode">
+
+                    <button class="btn btn-danger btn-sm ms-2"
+                            (click)="search()">
+                        <i class="fa fa-search"></i>
+                    </button>
+
+                    <button class="btn btn-secondary btn-sm ms-2"
+                            (click)="reset()">
+                        <i class="fa fa-rotate"></i>
+                    </button>
+
+                </td>
+            </tr>
+        </table>
+
+        <!-- Data Table -->
+        <table class="table table-bordered table-hover text-center shadow"
+               style="background:white; border-radius:10px; overflow:hidden;">
+
+            <tr class="table-danger">
+                <th>
+                    <input type="checkbox"
+                           [(ngModel)]="isMasterSel"
+                           (change)="checkUncheckAll($event)">
+                </th>
+                <th>S.No</th>
+                <th>AccountCode</th>
+                <th>UserName</th>
+                <th>AccountType</th>
+                <th>Status</th>
+                <th>Edit</th>
+            </tr>
+
+            <tr *ngFor="let m of form.list; let i = index">
+
+                <td>
+            <input type="checkbox"
+                   #checkboxes
+                   (change)="checklistUpdate()"
+                   [id]="m.id"
+                   [value]="isMasterSel">
+          </td>
+
+                <td>{{(form.pageNo*5)+i+1}}</td>
+
+                <td class="fw-bold text-danger">
+                    <i class="fa fa-user"></i>
+                    {{m.accountCode}}
+                </td>
+
+                <td>
+                    <span class="badge bg-danger">
+                        {{m.userName}}
+                    </span>
+                </td>
+
+                <td>
+                    <i class="fa fa-calendar"></i>
+                    {{m.accountType}}
+                </td>
+
+                <td>
+                    <i class="fa fa-phone"></i>
+                    {{m.status}}
+                </td>
+
+                <td>
+                    <button class="btn btn-warning btn-sm"
+                            (click)="forward('/account/' + m.id)">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                </td>
+
+            </tr>
+        </table>
+
+        <!-- Footer Buttons -->
+        <table class="w-100 mt-3">
+            <tr>
+
+                <td style="width:25%">
+                    <button class="btn btn-outline-danger btn-sm w-40"
+                            (click)="previous()"
+                            [disabled]="form.pageNo == 0">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </button>
+                </td>
+
+                <td align="center" style="width:25%">
+                    <button class="btn btn-success btn-sm w-30"
+                            (click)="forward('/account')">
+                        <i class="fa fa-plus"></i> New
+                    </button>
+                </td>
+
+                <td align="center" style="width:25%">
+                    <button class="btn btn-danger btn-sm w-30"
+                            (click)="delete()">
+                        <i class="fa fa-trash"></i> Delete
+                    </button>
+                </td>
+
+                <td align="right" style="width:25%">
+                    <button class="btn btn-outline-danger btn-sm w-40"
+                            (click)="next()"
+                            [disabled]="form.list.length < 5">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </button>
+                </td>
+
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- No Data -->
+    <div *ngIf="form.list.length == 0">
+        <button class="btn btn-secondary btn-sm" (click)="reset()">
+            <i class="fa fa-arrow-left"></i> Back
+        </button>
+    </div>
+
+</div>
+
+<app-footer></app-footer>
