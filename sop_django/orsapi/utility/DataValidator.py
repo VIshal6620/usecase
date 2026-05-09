@@ -101,3 +101,14 @@ class DataValidator:
             return False  # valid
         else:
             return True  # invalid
+
+    @classmethod
+    def isAlphaNumeric(cls, val):
+        if val is None or val.strip() == "":
+            return True  # invalid
+
+        # at least 1 letter + 1 number required
+        pattern = r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$'
+
+        return not bool(re.match(pattern, val))
+        # True = invalid, False = valid

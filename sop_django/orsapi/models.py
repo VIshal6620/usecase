@@ -360,3 +360,24 @@ class Account(models.Model):
 
     class Meta:
         db_table = 'sos_account'
+
+class Energy(models.Model):
+    energySource = models.CharField(max_length=50)
+    productionUnit = models.CharField(max_length=30)
+    outputLevel = models.CharField(max_length=50)
+    efficiencyRate = models.CharField(max_length=20)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'energySource': self.energySource,
+            'productionUnit': self.productionUnit,
+            'outputLevel': self.outputLevel,
+            'efficiencyRate': self.efficiencyRate
+
+        }
+
+        return data
+
+    class Meta:
+        db_table = 'sos_energy'

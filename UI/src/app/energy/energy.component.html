@@ -1,0 +1,131 @@
+<app-navbar></app-navbar>
+
+<div align="center"
+     style="min-height: 90vh;
+            padding: 40px;
+            background-image: url('assets/whit.jpg');
+            background-size: cover;
+            background-position: center;">
+
+    <!-- Heading -->
+    <h1 *ngIf="!form.data.id" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-calendar-plus"></i> Add Energy
+    </h1>
+
+    <h1 *ngIf="form.data.id>0" style="margin-bottom: 10px; color: navy">
+        <i class="fa-solid fa-pen-to-square"></i> Update Energy
+    </h1>
+
+    <!-- Message -->
+    <div style="height: 25px; margin-bottom: 15px;">
+        <h3 class="text-success m-0" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h3>
+        <h3 class="text-danger m-0" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h3>
+    </div>
+
+    <!-- Table Form -->
+    <table class="table table-bordered shadow"
+           style="background:white; border-radius:10px; width:420px; overflow:hidden;">
+
+        <!-- ĒnergySource -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-code"></i>
+                ĒnergySource <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="energySource"
+                       [(ngModel)]="form.data.energySource"
+                       placeholder="Enter ĒnergySource ">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.energySource}}
+            </td>
+        </tr>
+
+        <!-- ProductionUnit -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-gift"></i>
+                ProductionUnit <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="productionUnit"
+                       [(ngModel)]="form.data.productionUnit"
+                       placeholder="Enter ProductionUnit">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.productionUnit}}
+            </td>
+        </tr>
+
+        <!-- outputLevel -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-calendar-days"></i>
+                OutputLevel <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="outputLevel"
+                       [(ngModel)]="form.data.outputLevel"
+                       placeholder="Enter outputLevel">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.outputLevel}}
+            </td>
+        </tr>
+
+        <!-- EfficiencyRate -->
+        <tr>
+            <th class="text-start p-2">
+                <i class="fa-solid fa-tag"></i>
+                EfficiencyRate <span class="text-danger">*</span>
+            </th>
+            <td class="p-2">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="efficiencyRate"
+                       [(ngModel)]="form.data.efficiencyRate"
+                       placeholder="Enter EfficiencyRate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-danger small">
+                {{form.inputerror.efficiencyRate}}
+            </td>
+        </tr>
+
+        <!-- Button -->
+        <tr>
+            <td></td>
+            <td class="p-3">
+                <button class="btn btn-primary btn-sm px-4"
+                        (click)="submit()">
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<app-footer></app-footer>

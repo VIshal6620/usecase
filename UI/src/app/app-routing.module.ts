@@ -41,6 +41,8 @@ import { DonationCampListComponent } from "./donationcamp/donationcamp-list.comp
 import { DonationCampComponent } from "./donationcamp/donationcamp.component";
 import { AccountComponent } from "./account/account.component";
 import { AccountListComponent } from "./account/account-list.component";
+import { EnergyListComponent } from "./energy/energy-list.component";
+import { EnergyComponent } from "./energy/energy.component";
 
 
 
@@ -264,6 +266,16 @@ const routes: Routes = [
   { 
   path: 'account/:id',
    component: AccountComponent 
+  },
+  { path: 'energy', 
+    component: EnergyComponent },
+  {
+     path: 'energylist',
+   component: EnergyListComponent
+   },
+  { 
+  path: 'energy/:id',
+   component: EnergyComponent 
   },
   {
     path: 'changepassword',

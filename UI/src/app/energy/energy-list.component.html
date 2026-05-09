@@ -9,7 +9,7 @@
 
     <!-- Heading -->
     <h1 style="margin-bottom: 10px; color: navy;">
-        <i class="fas fa-address-card"></i> Account List
+        <i class="fa-solid fa-calendar-days"></i> Energy List
     </h1>
 
     <!-- Message -->
@@ -29,15 +29,15 @@
             <tr>
                 <td align="center">
 
-                    <label><b>Account Code: </b></label>
+                    <label><b>EnergySource: </b></label>
 
                     <input type="text"
                            class="form-control form-control-sm d-inline w-50"
-                           name="accountCode"
-                           [(ngModel)]="form.accountCode"
-                           placeholder="Enter accountCode">
+                           name="energySource"
+                           [(ngModel)]="form.energySource"
+                           placeholder="Enter EnergySource">
 
-                    <button class="btn btn-danger btn-sm ms-2"
+                    <button class="btn btn-primary btn-sm ms-2"
                             (click)="search()">
                         <i class="fa fa-search"></i>
                     </button>
@@ -55,17 +55,17 @@
         <table class="table table-bordered table-hover text-center shadow"
                style="background:white; border-radius:10px; overflow:hidden;">
 
-            <tr class="table-danger">
+            <tr class="table-primary">
                 <th>
                     <input type="checkbox"
                            [(ngModel)]="isMasterSel"
                            (change)="checkUncheckAll($event)">
                 </th>
                 <th>S.No</th>
-                <th>AccountCode</th>
-                <th>UserName</th>
-                <th>AccountType</th>
-                <th>Status</th>
+                <th>EnergySource</th>
+                <th>ProductionUnit</th>
+                <th>OutputLevel</th>
+                <th>EfficiencyRate</th>
                 <th>Edit</th>
             </tr>
 
@@ -81,30 +81,26 @@
 
                 <td>{{(form.pageNo*5)+i+1}}</td>
 
-                <td class="fw-bold text-danger">
-                    <i class="fa fa-user"></i>
-                    {{m.accountCode}}
+                <td class="fw-bold text-primary">
+                    {{m.energySource}}
+                </td>
+
+                <td>{{m.productionUnit}}</td>
+
+                <td>
+                    <i class="fa fa-calendar"></i>
+                    {{m.outputLevel}}
                 </td>
 
                 <td>
-                    <span class="badge bg-danger">
-                        {{m.userName}}
+                    <span class="badge bg-info text-dark">
+                        {{m.efficiencyRate}}
                     </span>
                 </td>
 
                 <td>
-                    <i class="fa fa-calendar"></i>
-                    {{m.accountType}}
-                </td>
-
-                <td>
-                    <i class="fa fa-phone"></i>
-                    {{m.status}}
-                </td>
-
-                <td>
                     <button class="btn btn-warning btn-sm"
-                            (click)="forward('/account/' + m.id)">
+                            (click)="forward('/energy/' + m.id)">
                         <i class="fa fa-edit"></i>
                     </button>
                 </td>
@@ -117,7 +113,7 @@
             <tr>
 
                 <td style="width:25%">
-                    <button class="btn btn-outline-danger btn-sm w-40"
+                    <button class="btn btn-outline-primary btn-sm w-50"
                             (click)="previous()"
                             [disabled]="form.pageNo == 0">
                         <i class="fa fa-arrow-left"></i> Previous
@@ -126,7 +122,7 @@
 
                 <td align="center" style="width:25%">
                     <button class="btn btn-success btn-sm w-30"
-                            (click)="forward('/account')">
+                            (click)="forward('/energy')">
                         <i class="fa fa-plus"></i> New
                     </button>
                 </td>
@@ -139,7 +135,7 @@
                 </td>
 
                 <td align="right" style="width:25%">
-                    <button class="btn btn-outline-danger btn-sm w-40"
+                    <button class="btn btn-outline-primary btn-sm w-50"
                             (click)="next()"
                             [disabled]="form.list.length < 5">
                         Next <i class="fa fa-arrow-right"></i>

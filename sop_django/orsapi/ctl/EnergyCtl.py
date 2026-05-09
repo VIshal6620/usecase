@@ -2,77 +2,77 @@ import json
 from django.http import JsonResponse
 from ..ctl.BaseCtl import BaseCtl
 from ..ctl.ErrorCtl import ErrorCtl
-from ..models import Account
-from ..service.AccountService import AccountService
+from ..models import Energy
+from ..service.EnergyService import EnergyService
 from ..utility.DataValidator import DataValidator
 
 
-
-
-
-class AccountCtl(BaseCtl):
+class EnergyCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
-        self.form['id'] = requestForm.get('id')
-        self.form['accountCode'] = requestForm.get('accountCode')
-        self.form['userName'] = requestForm.get('userName')
-        self.form['accountType'] = requestForm.get('accountType')
-        self.form['status'] = requestForm.get('status')
+        self.form['id'] = requestForm.get('id','')
+        self.form['energySource'] = requestForm.get('energySource','')
+        self.form['productionUnit'] = requestForm.get('productionUnit','')
+        self.form['outputLevel'] = requestForm.get('outputLevel','')
+        self.form['efficiencyRate'] = requestForm.get('efficiencyRate','')
+
 
     def form_to_model(self, obj):
         pk = int(self.form['id'])
-        if pk > 0:
+        if (pk > 0):
             obj.id = pk
-        obj.accountCode = self.form['accountCode']
-        obj.userName = self.form['userName']
-        obj.accountType = self.form['accountType']
-        obj.status = self.form['status']
+        obj.energySource = self.form['energySource']
+        obj.productionUnit = self.form['productionUnit']
+        obj.outputLevel = self.form['outputLevel']
+        obj.efficiencyRate = self.form['efficiencyRate']
         return obj
 
     def model_to_form(self, obj):
-        if obj == None:
+        if (obj == None):
             return
         self.form['id'] = obj.id
-        self.form['accountCode'] = obj.accountCode
-        self.form['userName'] = obj.userName
-        self.form['accountType'] = obj.accountType
-        self.form['status'] = obj.status
+        self.form['energySource'] = obj.energySource
+        self.form['productionUnit'] = obj.productionUnit
+        self.form['outputLevel'] = obj.outputLevel
+        self.form['efficiencyRate'] = obj.efficiencyRate
+
 
     def input_validation(self):
         super().input_validation()
         inputError = self.form['inputError']
 
-        if (DataValidator.isNull(self.form['accountCode'])):
-            inputError['accountCode'] = "accountCode can not be null"
+        if (DataValidator.isNull(self.form['energySource'])):
+            inputError['energySource'] = "EnergySource can not be null"
             self.form['error'] = True
         else:
-            if (DataValidator.isAlphaNumeric(self.form['accountCode'])):
-                inputError['accountCode'] = "accountCode contains only"
+            if (DataValidator.isalphacehck(self.form['energySource'])):
+                inputError['energySource'] = "EnergySource contains only"
                 self.form['error'] = True
 
-        if (DataValidator.isNull(self.form['userName'])):
-            inputError['userName'] = "userName can not be null"
+        if (DataValidator.isNull(self.form['productionUnit'])):
+            inputError['productionUnit'] = "ProductionUnit can not be null"
             self.form['error'] = True
         else:
-            if (DataValidator.isalphacehck(self.form['userName'])):
-                inputError['userName'] = "userName contains only"
+            if (DataValidator.isAllCharAllowed(self.form['productionUnit'])):
+                inputError['productionUnit'] = "ProductionUnit contains only"
                 self.form['error'] = True
 
-        if (DataValidator.isNull(self.form['accountType'])):
-            inputError['accountType'] = "accountType can not be null"
+        if (DataValidator.isNull(self.form['outputLevel'])):
+            inputError['outputLevel'] = "outputLevel can not be null"
             self.form['error'] = True
         else:
-            if (DataValidator.isalphacehck(self.form['accountType'])):
-                inputError['accountType'] = "accountType contains only"
+            if (DataValidator.isAllCharAllowed(self.form['outputLevel'])):
+                inputError['outputLevel'] = "outputLevel contains only"
                 self.form['error'] = True
 
-        if (DataValidator.isNull(self.form['status'])):
-            inputError['status'] = "status can not be null"
+        if (DataValidator.isNull(self.form['efficiencyRate'])):
+            inputError['efficiencyRate'] = "efficiencyRate can not be null"
             self.form['error'] = True
         else:
-            if (DataValidator.isalphacehck(self.form['status'])):
-                inputError['status'] = "status contains only"
+            if (DataValidator.isAllCharAllowed(self.form['efficiencyRate'])):
+                inputError['efficiencyRate'] = "efficiencyRate  contains only"
                 self.form['error'] = True
+
 
         return self.form['error']
 
@@ -90,45 +90,38 @@ class AccountCtl(BaseCtl):
                 return JsonResponse(res)
             # Check unique elements
             pk = int(self.form['id'])
-            uniqueAttrib = {"accountCode": self.form['accountCode']}
+            uniqueAttrib = {"energySource": self.form['energySource']}
             duplicateErrors = self.get_service().mduplicateFields(uniqueAttrib, pk)
             size = len(duplicateErrors)
             if (size > 0):
                 res["success"] = False
                 res["result"]["inputerror"] = duplicateErrors
+                res["result"]["message"] = "Already Exists"
                 return JsonResponse(res)
 
-            # Add/ Update the Account
-            account = self.form_to_model(Account())
-            pk = int(self.form['id'])
-            uniqueAttrib = {"accountCode": self.form['accountCode']}
-            duplicateErrors = self.get_service().mduplicateFields(uniqueAttrib, pk)
-            size = len(duplicateErrors)
-            if (size > 0):
-                res["success"] = False
-                res["result"]["inputerror"] = duplicateErrors
-            self.get_service().save(account)
+            # Add/ Update the Energy
+            energy = self.form_to_model(Energy())
+            self.get_service().save(energy)
             res["success"] = True
-            res["result"]["data"] = account.id
-            res["result"]["message"] = "Account added successfully"
+            res["result"]["data"] = energy.id
+            res["result"]["message"] = "Energy added successfully"
             return JsonResponse(res)
 
         except Exception as ex:
             return ErrorCtl.handle(ex)
-
 
     def search(self, request, params={}):
         try:
             json_request = json.loads(request.body)
             res = {"result": {}, "success": True}
             if (json_request):
-                params["accountCode"] = json_request.get("accountCode", None)
+                params["energySource"] = json_request.get("energySource", None)
                 params["pageNo"] = json_request.get("pageNo", None)
             records = self.get_service().search(params)
             if records and records.get("data"):
                 res["success"] = True
                 res["result"]["data"] = records["data"]
-                res["result"]["lastId"] = Account.objects.last().id
+                res["result"]["lastId"] = Energy.objects.last().id
             else:
                 res["success"] = False
                 res["result"]["message"] = "No record found"
@@ -169,14 +162,14 @@ class AccountCtl(BaseCtl):
     def preload(self, request, params={}):
         try:
             res = {"result": {}, "success": True}
-            account_list = AccountService().preload()
+            energy_list = EnergyService().preload()
             preloadList = []
-            for x in account_list:
+            for x in energy_list:
                 preloadList.append(x.to_json())
-            res["result"]["accountlist"] = preloadList
+            res["result"]["energyList"] = preloadList
             return JsonResponse(res)
         except Exception as ex:
             return ErrorCtl.handle(ex)
 
     def get_service(self):
-        return AccountService()
+        return EnergyService()

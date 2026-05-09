@@ -53,6 +53,8 @@ import { DonationCampComponent } from './donationcamp/donationcamp.component';
 import { DonationCampListComponent } from './donationcamp/donationcamp-list.component';
 import { AccountComponent } from './account/account.component';
 import { AccountListComponent } from './account/account-list.component';
+import { EnergyComponent } from './energy/energy.component';
+import { EnergyListComponent } from './energy/energy-list.component';
 
 
 @NgModule({
@@ -101,6 +103,8 @@ import { AccountListComponent } from './account/account-list.component';
     DonationCampListComponent,
     AccountComponent,
     AccountListComponent,
+    EnergyComponent,
+    EnergyListComponent,
  ],
   imports: [
     BrowserModule,

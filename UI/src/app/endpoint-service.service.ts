@@ -26,5 +26,6 @@ export class EndpointServiceService {
   public PURGE = this.SERVER_URL + "/Purge"
   public DONATIONCAMP = this.SERVER_URL + "/DonationCamp"
   public ACCOUNT = this.SERVER_URL + "/Account"
+  public ENERGY = this.SERVER_URL + "/Energy"
   
 }
