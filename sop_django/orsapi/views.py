@@ -24,6 +24,7 @@ from .ctl.PurgeCtl import PurgeCtl
 from .ctl.DonationCampCtl import DonationCampCtl
 from .ctl.AccountCtl import AccountCtl
 from .ctl.EnergyCtl import EnergyCtl
+from .ctl.LoginHistoryCtl import LoginHistoryCtl
 
 
 @csrf_exempt

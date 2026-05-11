@@ -55,6 +55,8 @@ import { AccountComponent } from './account/account.component';
 import { AccountListComponent } from './account/account-list.component';
 import { EnergyComponent } from './energy/energy.component';
 import { EnergyListComponent } from './energy/energy-list.component';
+import { LoginHistoryComponent } from './loginhistory/loginhistory.component';
+import { LoginHistoryListComponent } from './loginhistory/loginhistory-list.component';
 
 
 @NgModule({
@@ -105,6 +107,8 @@ import { EnergyListComponent } from './energy/energy-list.component';
     AccountListComponent,
     EnergyComponent,
     EnergyListComponent,
+    LoginHistoryComponent,
+    LoginHistoryListComponent,
  ],
   imports: [
     BrowserModule,

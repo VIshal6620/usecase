@@ -43,6 +43,8 @@ import { AccountComponent } from "./account/account.component";
 import { AccountListComponent } from "./account/account-list.component";
 import { EnergyListComponent } from "./energy/energy-list.component";
 import { EnergyComponent } from "./energy/energy.component";
+import { LoginHistoryListComponent } from "./loginhistory/loginhistory-list.component";
+import { LoginHistoryComponent } from "./loginhistory/loginhistory.component";
 
 
 
@@ -276,6 +278,16 @@ const routes: Routes = [
   { 
   path: 'energy/:id',
    component: EnergyComponent 
+  },
+  { path: 'loginhistory', 
+    component: LoginHistoryComponent },
+  {
+     path: 'loginhistorylist',
+   component: LoginHistoryListComponent
+   },
+  { 
+  path: 'loginhistory/:id',
+   component: LoginHistoryComponent 
   },
   {
     path: 'changepassword',

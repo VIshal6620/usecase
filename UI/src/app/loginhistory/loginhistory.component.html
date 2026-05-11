@@ -7,13 +7,12 @@
             background-size: cover;
             background-position: center;">
 
-    <!-- Heading -->
     <h1 *ngIf="!form.data.id" style="margin-bottom: 10px; color: navy">
-        <i class="fa-solid fa-plug"></i> Add Energy
+        <i class="fas fa-history"></i> Add LoginHistory
     </h1>
 
     <h1 *ngIf="form.data.id>0" style="margin-bottom: 10px; color: navy">
-        <i class="fa-solid fa-pen-to-square"></i> Update Energy
+        <i class="fa-solid fa-pen-to-square"></i> Update LoginHistory
     </h1>
 
     <!-- Message -->
@@ -28,89 +27,89 @@
 
     <!-- Table Form -->
     <table class="table table-bordered shadow"
-           style="background:white; border-radius:10px; width:420px; overflow:hidden;">
+           style="background: white; border-radius: 10px; width: 420px; overflow: hidden;">
 
-        <!-- ĒnergySource -->
+        <!-- historyCode -->
         <tr>
             <th class="text-start p-2">
-                <i class="fa-solid fa-code"></i>
-                ĒnergySource <span class="text-danger">*</span>
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                HistoryCode <span class="text-danger">*</span>
             </th>
             <td class="p-2">
                 <input type="text"
                        class="form-control form-control-sm"
-                       name="energySource"
-                       [(ngModel)]="form.data.energySource"
-                       placeholder="Enter ĒnergySource ">
+                       name="historyCode"
+                       [(ngModel)]="form.data.historyCode"
+                       placeholder="Enter historyCode">
             </td>
         </tr>
         <tr>
             <td></td>
             <td class="text-danger small">
-                {{form.inputerror.energySource}}
+                {{form.inputerror.historyCode}}
             </td>
         </tr>
 
-        <!-- ProductionUnit -->
+        <!-- userName  -->
         <tr>
             <th class="text-start p-2">
-                <i class="fa-solid fa-gift"></i>
-                ProductionUnit <span class="text-danger">*</span>
+                <i class="fa-solid fa-percent"></i>
+                UserName <span class="text-danger">*</span>
             </th>
             <td class="p-2">
                 <input type="text"
                        class="form-control form-control-sm"
-                       name="productionUnit"
-                       [(ngModel)]="form.data.productionUnit"
-                       placeholder="Enter ProductionUnit">
+                       name="userName"
+                       [(ngModel)]="form.data.userName"
+                       placeholder="Enter UserName">
             </td>
         </tr>
         <tr>
             <td></td>
             <td class="text-danger small">
-                {{form.inputerror.productionUnit}}
+                {{form.inputerror.userName}}
             </td>
         </tr>
 
-        <!-- outputLevel -->
+        <!-- loginTime -->
         <tr>
             <th class="text-start p-2">
                 <i class="fa-solid fa-calendar-days"></i>
-                OutputLevel <span class="text-danger">*</span>
+                LoginTime <span class="text-danger">*</span>
             </th>
             <td class="p-2">
-                <input type="text"
+                <input type="time"
                        class="form-control form-control-sm"
-                       name="outputLevel"
-                       [(ngModel)]="form.data.outputLevel"
-                       placeholder="Enter outputLevel">
+                       name="loginTime"
+                       [(ngModel)]="form.data.loginTime"
+                        placeholder="Enter loginTime">
             </td>
         </tr>
         <tr>
             <td></td>
             <td class="text-danger small">
-                {{form.inputerror.outputLevel}}
+                {{form.inputerror.loginTime}}
             </td>
         </tr>
 
-        <!-- EfficiencyRate -->
+           <!-- Status -->
         <tr>
             <th class="text-start p-2">
-                <i class="fa-solid fa-tag"></i>
-                EfficiencyRate <span class="text-danger">*</span>
+                <i class="fa-solid fa-calendar-days"></i>
+                Status <span class="text-danger">*</span>
             </th>
             <td class="p-2">
                 <input type="text"
                        class="form-control form-control-sm"
-                       name="efficiencyRate"
-                       [(ngModel)]="form.data.efficiencyRate"
-                       placeholder="Enter EfficiencyRate">
+                       name="status"
+                       [(ngModel)]="form.data.status"
+                        placeholder="Enter status">
             </td>
         </tr>
         <tr>
             <td></td>
             <td class="text-danger small">
-                {{form.inputerror.efficiencyRate}}
+                {{form.inputerror.status}}
             </td>
         </tr>
 

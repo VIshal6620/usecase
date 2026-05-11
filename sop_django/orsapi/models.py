@@ -381,3 +381,23 @@ class Energy(models.Model):
 
     class Meta:
         db_table = 'sos_energy'
+
+
+class LoginHistory(models.Model):
+    historyCode = models.CharField(max_length=30)
+    userName = models.CharField(max_length=30)
+    loginTime = models.TimeField(max_length=15)
+    status = models.CharField(max_length=60)
+
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'historyCode': self.historyCode,
+            'userName': self.userName,
+            'loginTime': self.loginTime,
+            'status': self.status
+        }
+        return data
+
+    class Meta:
+        db_table = 'sos_loginhistory'

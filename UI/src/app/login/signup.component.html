@@ -1,179 +1,329 @@
-<app-navbar style="position: relative; z-index: 10;"></app-navbar>
+<!-- Header/Navbar -->
+<app-navbar></app-navbar>
 
-<div class="d-flex justify-content-center align-items-center py-3"
+<!-- Main Container -->
+<div class="container-fluid py-4 position-relative"
      style="min-height: 100vh;
             background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?w=1600');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;">
 
-  <!-- Dark overlay -->
-    <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 0;"></div>
-
-
-  <div class="card shadow-lg p-3 position-relative" style="max-width: 750px; width: 100%; border-radius: 12px; z-index: 1; background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);">
-
-    <h2 class="text-center mb-1" style="color: navy; font-size: 18px;">User Registration</h2>
-
-    <div style="min-height: 22px;" class="text-center mb-2">
-      <small class="text-success fw-semibold" *ngIf="!form.error && form.message">{{ form.message }}</small>
-      <small class="text-danger fw-semibold" *ngIf="form.error && form.message">{{ form.message }}</small>
+    <!-- Dark Overlay -->
+    <div class="position-absolute top-0 start-0 w-100 h-100"
+         style="background: rgba(0,0,0,0.45); z-index: 0;">
     </div>
 
-    <div class="row g-2">
+    <!-- Form Card -->
+    <div class="row justify-content-center position-relative"
+         style="z-index: 1;">
 
-      <!-- First Name -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-id-card me-1"></i>First Name <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-user fa-sm"></i></span>
-            <input type="text" class="form-control form-control-sm" name="firstName"
-                   [(ngModel)]="form.data.firstName" placeholder="Enter First Name">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.firstName }}</small>
+        <div class="col-lg-7 col-md-9 col-sm-11">
+
+            <div class="card shadow-lg border-0 rounded-4"
+                 style="background: rgba(255,255,255,0.94);
+                        backdrop-filter: blur(8px);">
+
+                <!-- Card Header -->
+                <div class="card-header text-center bg-primary text-white rounded-top-4 py-3">
+
+                    <h3 class="mb-0 fw-bold">
+                        <i class="fa-solid fa-user-plus me-2"></i>
+                        User Registration
+                    </h3>
+
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body p-4">
+
+                    <!-- Success/Error Message -->
+                    <div class="text-center mb-3">
+
+                        <small class="text-success fw-bold"
+                               *ngIf="!form.error && form.message">
+                            {{ form.message }}
+                        </small>
+
+                        <small class="text-danger fw-bold"
+                               *ngIf="form.error && form.message">
+                            {{ form.message }}
+                        </small>
+
+                    </div>
+
+                    <div class="row g-3">
+
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-user me-1"></i>
+                                First Name
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+
+                                <input type="text"
+                                       class="form-control"
+                                       name="firstName"
+                                       [(ngModel)]="form.data.firstName"
+                                       placeholder="Enter First Name">
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.firstName }}
+                            </small>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-user-tag me-1"></i>
+                                Last Name
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+
+                                <input type="text"
+                                       class="form-control"
+                                       name="lastName"
+                                       [(ngModel)]="form.data.lastName"
+                                       placeholder="Enter Last Name">
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.lastName }}
+                            </small>
+                        </div>
+
+                        <!-- Login ID -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-at me-1"></i>
+                                Login ID
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+
+                                <input type="text"
+                                       class="form-control"
+                                       name="loginId"
+                                       [(ngModel)]="form.data.loginId"
+                                       placeholder="Enter Login ID">
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.loginId }}
+                            </small>
+                        </div>
+
+                        <!-- Mobile -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-phone me-1"></i>
+                                Mobile Number
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-mobile-screen-button"></i>
+                                </span>
+
+                                <input type="text"
+                                       class="form-control"
+                                       maxlength="10"
+                                       name="mobileNumber"
+                                       [(ngModel)]="form.data.mobileNumber"
+                                       placeholder="Enter Mobile Number">
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.mobileNumber }}
+                            </small>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-lock me-1"></i>
+                                Password
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-key"></i>
+                                </span>
+
+                                <input type="password"
+                                       class="form-control"
+                                       name="password"
+                                       [(ngModel)]="form.data.password"
+                                       placeholder="Enter Password">
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.password }}
+                            </small>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-shield-halved me-1"></i>
+                                Confirm Password
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+
+                                <input type="password"
+                                       class="form-control"
+                                       name="confirmPassword"
+                                       [(ngModel)]="form.data.confirmPassword"
+                                       placeholder="Confirm Password">
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.confirmPassword }}
+                            </small>
+                        </div>
+
+                        <!-- DOB -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-calendar-days me-1"></i>
+                                Date of Birth
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+
+                                <input type="date"
+                                       class="form-control"
+                                       name="dob"
+                                       [(ngModel)]="form.data.dob">
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.dob }}
+                            </small>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-venus-mars me-1"></i>
+                                Gender
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-person"></i>
+                                </span>
+
+                                <select class="form-select"
+                                        name="gender"
+                                        [(ngModel)]="form.data.gender">
+
+                                    <option value="unundefined">
+                                        ---- Select Gender ----
+                                    </option>
+
+                                    <option value="Male">
+                                        Male
+                                    </option>
+
+                                    <option value="Female">
+                                        Female
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.gender }}
+                            </small>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="col-12">
+                            <label class="form-label fw-semibold">
+                                <i class="fa fa-location-dot me-1"></i>
+                                Address
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fa fa-map-marker-alt"></i>
+                                </span>
+
+                                <textarea class="form-control"
+                                          rows="2"
+                                          name="address"
+                                          [(ngModel)]="form.data.address"
+                                          placeholder="Enter Address">
+                                </textarea>
+                            </div>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.address }}
+                            </small>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="col-12 text-center mt-3">
+
+                            <button class="btn btn-primary px-4 me-2"
+                                    (click)="signUp()">
+
+                                <i class="fa fa-user-plus me-1"></i>
+                                Sign Up
+
+                            </button>
+
+                            <button class="btn btn-outline-secondary px-4"
+                                    (click)="reset()">
+
+                                <i class="fa fa-rotate-left me-1"></i>
+                                Reset
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
-
-      <!-- Last Name -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-id-card me-1"></i>Last Name <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-user fa-sm"></i></span>
-            <input type="text" class="form-control form-control-sm" name="lastName"
-                   [(ngModel)]="form.data.lastName" placeholder="Enter Last Name">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.lastName }}</small>
-        </div>
-      </div>
-
-      <!-- Login ID -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-fingerprint me-1"></i>Login ID <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-at fa-sm"></i></span>
-            <input type="text" class="form-control form-control-sm" name="loginId"
-                   [(ngModel)]="form.data.loginId" placeholder="Enter Login ID">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.loginId }}</small>
-        </div>
-      </div>
-
-      <!-- Password -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-lock me-1"></i>Password <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-key fa-sm"></i></span>
-            <input type="password" class="form-control form-control-sm" name="password"
-                   [(ngModel)]="form.data.password" placeholder="Enter Password">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.password }}</small>
-        </div>
-      </div>
-
-      <!-- Confirm Password -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-lock me-1"></i>Confirm Password <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-shield-halved fa-sm"></i></span>
-            <input type="password" class="form-control form-control-sm" name="confirmPassword"
-                   [(ngModel)]="form.data.confirmPassword" placeholder="Enter Confirm Password">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.confirmPassword }}</small>
-        </div>
-      </div>
-
-      <!-- Date of Birth -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-calendar me-1"></i>Date of Birth <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-calendar-days fa-sm"></i></span>
-            <input type="date" class="form-control form-control-sm" name="dob"
-                   [(ngModel)]="form.data.dob">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.dob }}</small>
-        </div>
-      </div>
-
-      <!-- Address -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-location-dot me-1"></i>Address <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-map-marker-alt fa-sm"></i></span>
-            <input type="text" class="form-control form-control-sm" name="address"
-                   [(ngModel)]="form.data.address" placeholder="Enter Address">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.address }}</small>
-        </div>
-      </div>
-
-      <!-- Gender -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-venus-mars me-1"></i>Gender <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-person fa-sm"></i></span>
-            <select class="form-select form-select-sm" name="gender" [(ngModel)]="form.data.gender"
-                    style="border-radius: 0 6px 6px 0; border-left: none;">
-              <option value="">------------ Select ------------</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.gender }}</small>
-        </div>
-      </div>
-
-      <!-- Mobile -->
-      <div class="col-12">
-        <label class="form-label mb-0" style="font-size: 12px; font-weight: 500;">
-          <i class="fa fa-phone me-1"></i>Mobile <span class="text-danger">*</span>
-        </label>
-        <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text"><i class="fa fa-mobile-screen-button fa-sm"></i></span>
-            <input type="text" class="form-control form-control-sm" name="mobileNumber"
-                   [(ngModel)]="form.data.mobileNumber" maxlength="10"
-                   placeholder="Enter Mobile No.">
-          </div>
-          <small class="text-danger text-nowrap" style="min-width: 130px; font-size: 11px;">{{ form.inputerror.mobileNumber }}</small>
-        </div>
-      </div>
-
-      <!-- Buttons -->
-      <div class="col-12 d-flex gap-2 mt-1">
-        <button class="btn btn-primary btn-sm" (click)="signUp()">
-          <i class="fa fa-user-plus me-1"></i>Sign Up
-        </button>
-        <button class="btn btn-outline-secondary btn-sm" (click)="reset()">
-          <i class="fa fa-rotate-left me-1"></i>Reset
-        </button>
-      </div>
 
     </div>
-  </div>
+
 </div>
 
+<!-- Footer -->
 <app-footer></app-footer>

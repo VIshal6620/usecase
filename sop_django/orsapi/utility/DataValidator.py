@@ -112,3 +112,18 @@ class DataValidator:
 
         return not bool(re.match(pattern, val))
         # True = invalid, False = valid
+
+    @classmethod
+    def isTime(cls, val):
+        import re
+
+        if val is None or val.strip() == "":
+            return True  # invalid
+
+        # HH:MM format (24-hour)
+        pattern = r"^([01]?[0-9]|2[0-3]):[0-5][0-9]$"
+
+        if re.match(pattern, val):
+            return False  # valid
+        else:
+            return True  # invalid
